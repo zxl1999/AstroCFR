@@ -1,0 +1,54 @@
+{
+  "dao": {
+    "runtime_s_per_mpix": 0.10851361112145241,
+    "runtime_s": 0.15625960001489148,
+    "recall_v_le_18": 0.8,
+    "recall_v_le_20": 0.4740444951511694,
+    "recall_v_le_22": 0.22257462686567164
+  },
+  "sep": {
+    "runtime_s_per_mpix": 6.373053263875287,
+    "runtime_s": 9.177196699980414,
+    "recall_v_le_18": 0.5238095238095238,
+    "recall_v_le_20": 0.5592073465442242,
+    "recall_v_le_22": 0.5238095238095238
+  },
+  "photutils_psf": {
+    "runtime_s_per_mpix": 7.775862430551367,
+    "runtime_s": 11.19724189999397,
+    "recall_v_le_18": 0.7961538461538461,
+    "recall_v_le_20": 0.47290359383913294,
+    "recall_v_le_22": 0.22294776119402984
+  },
+  "wpdc_epsf_deblend": {
+    "runtime_s_per_mpix": 24.849829791673983,
+    "runtime_s": 35.783754900010535,
+    "recall_v_le_18": 0.9354838709677419,
+    "recall_v_le_20": 0.7283711938134364,
+    "recall_v_le_22": 0.37412513255567337
+  },
+  "wpdc_spatial_epsf_joint": {
+    "runtime_s_per_mpix": 45.64995770833775,
+    "runtime_s": 65.73593910000636,
+    "recall_v_le_18": 0.9705882352941176,
+    "recall_v_le_20": 0.8801353310778154,
+    "recall_v_le_22": 0.6235897435897436
+  },
+  "metadata": {
+    "fields": [
+      "ngc2808",
+      "ngc5286",
+      "ngc6388",
+      "ngc6441",
+      "ngc0104",
+      "ngc0362",
+      "ngc6093",
+      "ngc6624",
+      "ngc6397",
+      "ngc6752",
+      "ngc1851"
+    ],
+    "area_pixels": 1440000,
+    "hardware_scope": "CPU crop timing; no GPU or full-detector extrapolation"
+  }
+}

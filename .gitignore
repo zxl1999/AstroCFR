@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.fits
+*.fit
+*.fz
+data/raw/
+results/raw/
+*.log
+*.tmp
+external/CSST_PSFNet/
+external/dolphot/
+results/csst_psfnet_audit/challenge_11th_page.html
+results/transformer_candidate_ablation/simulation_candidate_cutouts.npz

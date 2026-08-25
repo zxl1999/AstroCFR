@@ -1,0 +1,2325 @@
+{
+  "protocol": {
+    "crop": "same central 1200x1200 ACSGGCT crop for every method",
+    "association_radius_px": 2,
+    "spatial_protocol": "cells 0/1/2: WPDC fitting/threshold/final test; baselines use no labels",
+    "artificial_stars": "same fixed scenes for all methods; 2x20 stars per magnitude/density stratum",
+    "ci": "Wilson 95% binomial confidence interval",
+    "photutils_artificial_detection": "shares the identical DAOStarFinder candidate frontend; PSF fitting affects measurement, not proposal recovery",
+    "spatial_epsf_joint": "quadrant image-only empirical PSFs and two neighbour-aware coordinate/flux fitting passes; it remains a separate operating point until the full controlled run is assessed"
+  },
+  "results": [
+    {
+      "cluster": "ngc2808",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 11183,
+      "test_references": 6485,
+      "test_recovered": 600,
+      "test_completeness": 0.09252120277563608,
+      "test_completeness_ci95": [
+        0.08570795598340201,
+        0.09981693030755014
+      ],
+      "test_catalog_match_lower_bound": 0.3145290047897818,
+      "runtime_s": 0.17758290001074784,
+      "runtime_s_per_mpix": 0.12332145834079711,
+      "peak_rss_delta_mb": 39.86328125,
+      "recall_v_le_18": 0.09293680297397769,
+      "n_v_le_18": 538,
+      "recall_v_le_20": 0.09316770186335403,
+      "n_v_le_20": 3703,
+      "recall_v_le_22": 0.09319338422391857,
+      "n_v_le_22": 6288,
+      "high_density_v20_recall": 0.09200805910006717,
+      "high_density_v20_n": 2978,
+      "high_density_v20_ci95": [
+        0.08214586786647941,
+        0.10292150794583739
+      ],
+      "astrometric_rms_px": 1.0067595847940778,
+      "astrometric_rms_mas": 50.33797923970389,
+      "photometric_rms_mag": 1.6405921164381876,
+      "measurement_test_matches": 603,
+      "astrometric_rms_mas_ci95": [
+        49.2425098400209,
+        51.54266323137188
+      ],
+      "photometric_rms_mag_ci95": [
+        1.5429062378724623,
+        1.7356619044284207
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc2808",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 7393,
+      "test_references": 6485,
+      "test_recovered": 486,
+      "test_completeness": 0.07494217424826523,
+      "test_completeness_ci95": [
+        0.06878239270325756,
+        0.0816052512176543
+      ],
+      "test_catalog_match_lower_bound": 0.3386844166014096,
+      "runtime_s": 6.857925099990098,
+      "runtime_s_per_mpix": 4.762447986104235,
+      "peak_rss_delta_mb": 11.08203125,
+      "recall_v_le_18": 0.08364312267657993,
+      "n_v_le_18": 538,
+      "recall_v_le_20": 0.07075344315419929,
+      "n_v_le_20": 3703,
+      "recall_v_le_22": 0.07538167938931298,
+      "n_v_le_22": 6288,
+      "high_density_v20_recall": 0.06984553391537945,
+      "high_density_v20_n": 2978,
+      "high_density_v20_ci95": [
+        0.06123421955992866,
+        0.07956521123478558
+      ],
+      "astrometric_rms_px": 1.0185082780873074,
+      "astrometric_rms_mas": 50.92541390436537,
+      "photometric_rms_mag": 1.886047583963989,
+      "measurement_test_matches": 487,
+      "astrometric_rms_mas_ci95": [
+        49.66234217263426,
+        52.12687159468393
+      ],
+      "photometric_rms_mag_ci95": [
+        1.7634354171142113,
+        2.0003670985765205
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc2808",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 11183,
+      "test_references": 6485,
+      "test_recovered": 594,
+      "test_completeness": 0.09159599074787972,
+      "test_completeness_ci95": [
+        0.08481501944852371,
+        0.09886053829663685
+      ],
+      "test_catalog_match_lower_bound": 0.31373070782331025,
+      "runtime_s": 30.637076399987563,
+      "runtime_s_per_mpix": 21.275747499991365,
+      "peak_rss_delta_mb": 524.88671875,
+      "recall_v_le_18": 0.09293680297397769,
+      "n_v_le_18": 538,
+      "recall_v_le_20": 0.09235754793410748,
+      "n_v_le_20": 3703,
+      "recall_v_le_22": 0.09239821882951654,
+      "n_v_le_22": 6288,
+      "high_density_v20_recall": 0.09167226326393553,
+      "high_density_v20_n": 2978,
+      "high_density_v20_ci95": [
+        0.08182749506881588,
+        0.10256915430384027
+      ],
+      "astrometric_rms_px": 1.0041819433691905,
+      "astrometric_rms_mas": 50.20909716845953,
+      "photometric_rms_mag": 1.584220517907946,
+      "measurement_test_matches": 597,
+      "astrometric_rms_mas_ci95": [
+        49.04681460628514,
+        51.34266193078283
+      ],
+      "photometric_rms_mag_ci95": [
+        1.4872369355981505,
+        1.6788836722786316
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc2808",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 13451,
+      "test_references": 6485,
+      "test_recovered": 737,
+      "test_completeness": 0.11364687740940632,
+      "test_completeness_ci95": [
+        0.10614978247127896,
+        0.12160143894858125
+      ],
+      "test_catalog_match_lower_bound": 0.3176315210213515,
+      "runtime_s": 107.67709750001086,
+      "runtime_s_per_mpix": 74.77576215278532,
+      "peak_rss_delta_mb": 52.07421875,
+      "recall_v_le_18": 0.11895910780669144,
+      "n_v_le_18": 538,
+      "recall_v_le_20": 0.11504185795301107,
+      "n_v_le_20": 3703,
+      "recall_v_le_22": 0.11434478371501272,
+      "n_v_le_22": 6288,
+      "high_density_v20_recall": 0.11517797179314976,
+      "high_density_v20_n": 2978,
+      "high_density_v20_ci95": [
+        0.10420456402320251,
+        0.1271429361256987
+      ],
+      "astrometric_rms_px": 1.0093247784444261,
+      "astrometric_rms_mas": 50.46623892222131,
+      "photometric_rms_mag": 1.6600814490830273,
+      "measurement_test_matches": 741,
+      "astrometric_rms_mas_ci95": [
+        49.485239975331076,
+        51.46401599386715
+      ],
+      "photometric_rms_mag_ci95": [
+        1.5689236189255498,
+        1.7535276582514487
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc2808",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 12673,
+      "test_references": 6485,
+      "test_recovered": 681,
+      "test_completeness": 0.10501156515034696,
+      "test_completeness_ci95": [
+        0.0977824172668308,
+        0.11270840439230788
+      ],
+      "test_catalog_match_lower_bound": 0.3132726848612083,
+      "runtime_s": 121.30862590001198,
+      "runtime_s_per_mpix": 84.24210131945276,
+      "peak_rss_delta_mb": 51.45703125,
+      "recall_v_le_18": 0.11524163568773234,
+      "n_v_le_18": 538,
+      "recall_v_le_20": 0.10775047258979206,
+      "n_v_le_20": 3703,
+      "recall_v_le_22": 0.10607506361323155,
+      "n_v_le_22": 6288,
+      "high_density_v20_recall": 0.10779046339825386,
+      "high_density_v20_n": 2978,
+      "high_density_v20_ci95": [
+        0.09715321406280818,
+        0.11943830441355892
+      ],
+      "astrometric_rms_px": 1.0030023318838845,
+      "astrometric_rms_mas": 50.15011659419423,
+      "photometric_rms_mag": 1.6819273765519076,
+      "measurement_test_matches": 683,
+      "astrometric_rms_mas_ci95": [
+        49.06975067593665,
+        51.21302945732863
+      ],
+      "photometric_rms_mag_ci95": [
+        1.592935008921497,
+        1.7658206950862252
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc5286",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 3725,
+      "test_references": 6322,
+      "test_recovered": 1127,
+      "test_completeness": 0.17826637140145524,
+      "test_completeness_ci95": [
+        0.1690278765568133,
+        0.18789563540719165
+      ],
+      "test_catalog_match_lower_bound": 0.9580364212193191,
+      "runtime_s": 0.15010780000011437,
+      "runtime_s_per_mpix": 0.1042415277778572,
+      "peak_rss_delta_mb": 40.34375,
+      "recall_v_le_18": 0.8,
+      "n_v_le_18": 260,
+      "recall_v_le_20": 0.4740444951511694,
+      "n_v_le_20": 1753,
+      "recall_v_le_22": 0.21904761904761905,
+      "n_v_le_22": 5145,
+      "high_density_v20_recall": 0.43533834586466164,
+      "high_density_v20_n": 1330,
+      "high_density_v20_ci95": [
+        0.4089159679812886,
+        0.4621331880804206
+      ],
+      "astrometric_rms_px": 0.049200757431999476,
+      "astrometric_rms_mas": 2.460037871599974,
+      "photometric_rms_mag": 0.17299723408004156,
+      "measurement_test_matches": 1127,
+      "astrometric_rms_mas_ci95": [
+        2.355659496018548,
+        2.5699521325842483
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1652118463606478,
+        0.1810023712887687
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc5286",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 9210,
+      "test_references": 6322,
+      "test_recovered": 2698,
+      "test_completeness": 0.426763682378994,
+      "test_completeness_ci95": [
+        0.41461937380245756,
+        0.4389969418510992
+      ],
+      "test_catalog_match_lower_bound": 0.9384463462804477,
+      "runtime_s": 12.186969699978363,
+      "runtime_s_per_mpix": 8.463173402762752,
+      "peak_rss_delta_mb": 11.2578125,
+      "recall_v_le_18": 0.7,
+      "n_v_le_18": 260,
+      "recall_v_le_20": 0.6001140901312036,
+      "n_v_le_20": 1753,
+      "recall_v_le_22": 0.5240038872691934,
+      "n_v_le_22": 5145,
+      "high_density_v20_recall": 0.5857142857142857,
+      "high_density_v20_n": 1330,
+      "high_density_v20_ci95": [
+        0.5590302010701174,
+        0.6119046385690123
+      ],
+      "astrometric_rms_px": 0.18071499838181346,
+      "astrometric_rms_mas": 9.035749919090673,
+      "photometric_rms_mag": 0.3175370591483706,
+      "measurement_test_matches": 2709,
+      "astrometric_rms_mas_ci95": [
+        8.71248215372897,
+        9.351658101043938
+      ],
+      "photometric_rms_mag_ci95": [
+        0.3091528207020681,
+        0.32627585582862056
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc5286",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 3688,
+      "test_references": 6322,
+      "test_recovered": 1118,
+      "test_completeness": 0.176842771274913,
+      "test_completeness_ci95": [
+        0.16763471872368835,
+        0.18644332205431657
+      ],
+      "test_catalog_match_lower_bound": 0.9585987261146497,
+      "runtime_s": 10.850903899990954,
+      "runtime_s_per_mpix": 7.535349930549273,
+      "peak_rss_delta_mb": 56.125,
+      "recall_v_le_18": 0.7961538461538461,
+      "n_v_le_18": 260,
+      "recall_v_le_20": 0.47290359383913294,
+      "n_v_le_20": 1753,
+      "recall_v_le_22": 0.2172983479105928,
+      "n_v_le_22": 5145,
+      "high_density_v20_recall": 0.4345864661654135,
+      "high_density_v20_n": 1330,
+      "high_density_v20_ci95": [
+        0.4081715320104875,
+        0.4613781956333346
+      ],
+      "astrometric_rms_px": 0.1359432021429686,
+      "astrometric_rms_mas": 6.7971601071484296,
+      "photometric_rms_mag": 0.1816001281652376,
+      "measurement_test_matches": 1120,
+      "astrometric_rms_mas_ci95": [
+        6.472135156379654,
+        7.121682459417045
+      ],
+      "photometric_rms_mag_ci95": [
+        0.17339884832168262,
+        0.18984827786601385
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc5286",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 6146,
+      "test_references": 6322,
+      "test_recovered": 1847,
+      "test_completeness": 0.2921543815248339,
+      "test_completeness_ci95": [
+        0.2810733307996481,
+        0.3034878760443552
+      ],
+      "test_catalog_match_lower_bound": 0.9492168960607499,
+      "runtime_s": 33.64597139999387,
+      "runtime_s_per_mpix": 23.36525791666241,
+      "peak_rss_delta_mb": 56.94140625,
+      "recall_v_le_18": 0.8423076923076923,
+      "n_v_le_18": 260,
+      "recall_v_le_20": 0.6280661722760981,
+      "n_v_le_20": 1753,
+      "recall_v_le_22": 0.3589893100097182,
+      "n_v_le_22": 5145,
+      "high_density_v20_recall": 0.5954887218045113,
+      "high_density_v20_n": 1330,
+      "high_density_v20_ci95": [
+        0.5688728595739281,
+        0.6215545494977339
+      ],
+      "astrometric_rms_px": 0.14442611685260826,
+      "astrometric_rms_mas": 7.221305842630413,
+      "photometric_rms_mag": 0.1145072252043387,
+      "measurement_test_matches": 1851,
+      "astrometric_rms_mas_ci95": [
+        6.939157743644348,
+        7.514873047214738
+      ],
+      "photometric_rms_mag_ci95": [
+        0.11002453747267034,
+        0.118821220367568
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc5286",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 11476,
+      "test_references": 6322,
+      "test_recovered": 3234,
+      "test_completeness": 0.5115469788041759,
+      "test_completeness_ci95": [
+        0.49922165596249984,
+        0.5238582769906109
+      ],
+      "test_catalog_match_lower_bound": 0.937905949597298,
+      "runtime_s": 97.91434219997609,
+      "runtime_s_per_mpix": 67.99607097220562,
+      "peak_rss_delta_mb": 50.88671875,
+      "recall_v_le_18": 0.9653846153846154,
+      "n_v_le_18": 260,
+      "recall_v_le_20": 0.9144324015972618,
+      "n_v_le_20": 1753,
+      "recall_v_le_22": 0.6285714285714286,
+      "n_v_le_22": 5145,
+      "high_density_v20_recall": 0.9097744360902256,
+      "high_density_v20_n": 1330,
+      "high_density_v20_ci95": [
+        0.8931732912398963,
+        0.924015196508574
+      ],
+      "astrometric_rms_px": 0.07498923041619432,
+      "astrometric_rms_mas": 3.749461520809716,
+      "photometric_rms_mag": 0.11353133294633848,
+      "measurement_test_matches": 3240,
+      "astrometric_rms_mas_ci95": [
+        3.6487535564930185,
+        3.854374847917223
+      ],
+      "photometric_rms_mag_ci95": [
+        0.11025260554975547,
+        0.11669641875515072
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6388",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 12583,
+      "test_references": 6939,
+      "test_recovered": 3322,
+      "test_completeness": 0.4787433347744632,
+      "test_completeness_ci95": [
+        0.4670043666376705,
+        0.4905058263069589
+      ],
+      "test_catalog_match_lower_bound": 0.9329210275927687,
+      "runtime_s": 0.20053150001331232,
+      "runtime_s_per_mpix": 0.13925798612035578,
+      "peak_rss_delta_mb": 39.9296875,
+      "recall_v_le_18": 0.8914858096828047,
+      "n_v_le_18": 599,
+      "recall_v_le_20": 0.7822014051522248,
+      "n_v_le_20": 2135,
+      "recall_v_le_22": 0.5188193034515071,
+      "n_v_le_22": 6403,
+      "high_density_v20_recall": 0.7741935483870968,
+      "high_density_v20_n": 1519,
+      "high_density_v20_ci95": [
+        0.7524903510502395,
+        0.794513355704291
+      ],
+      "astrometric_rms_px": 0.10394205171686022,
+      "astrometric_rms_mas": 5.197102585843011,
+      "photometric_rms_mag": 0.20904325423086006,
+      "measurement_test_matches": 3322,
+      "astrometric_rms_mas_ci95": [
+        5.079983083333856,
+        5.320499079523453
+      ],
+      "photometric_rms_mag_ci95": [
+        0.20356316960245832,
+        0.2139341040335247
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6388",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 8337,
+      "test_references": 6939,
+      "test_recovered": 2281,
+      "test_completeness": 0.32872171782677617,
+      "test_completeness_ci95": [
+        0.31776632038056885,
+        0.3398666580241234
+      ],
+      "test_catalog_match_lower_bound": 0.9512550018188433,
+      "runtime_s": 9.052488600020297,
+      "runtime_s_per_mpix": 6.286450416680761,
+      "peak_rss_delta_mb": 2.375,
+      "recall_v_le_18": 0.6026711185308848,
+      "n_v_le_18": 599,
+      "recall_v_le_20": 0.6693208430913349,
+      "n_v_le_20": 2135,
+      "recall_v_le_22": 0.35623926284554114,
+      "n_v_le_22": 6403,
+      "high_density_v20_recall": 0.7261356155365372,
+      "high_density_v20_n": 1519,
+      "high_density_v20_ci95": [
+        0.7031600909493689,
+        0.7479702170222546
+      ],
+      "astrometric_rms_px": 0.3165038317876782,
+      "astrometric_rms_mas": 15.82519158938391,
+      "photometric_rms_mag": 0.36925303014887095,
+      "measurement_test_matches": 2282,
+      "astrometric_rms_mas_ci95": [
+        15.306123342581278,
+        16.31752021010195
+      ],
+      "photometric_rms_mag_ci95": [
+        0.3591738646272295,
+        0.3788972549704704
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6388",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 12579,
+      "test_references": 6939,
+      "test_recovered": 3325,
+      "test_completeness": 0.4791756737282029,
+      "test_completeness_ci95": [
+        0.4674360382735207,
+        0.4909383541366416
+      ],
+      "test_catalog_match_lower_bound": 0.9305753685211603,
+      "runtime_s": 36.43676450001658,
+      "runtime_s_per_mpix": 25.30330868056707,
+      "peak_rss_delta_mb": 673.71484375,
+      "recall_v_le_18": 0.8948247078464107,
+      "n_v_le_18": 599,
+      "recall_v_le_20": 0.7840749414519906,
+      "n_v_le_20": 2135,
+      "recall_v_le_22": 0.5192878338278932,
+      "n_v_le_22": 6403,
+      "high_density_v20_recall": 0.7748518762343647,
+      "high_density_v20_n": 1519,
+      "high_density_v20_ci95": [
+        0.7531686726424287,
+        0.7951483683420046
+      ],
+      "astrometric_rms_px": 0.08937074821210877,
+      "astrometric_rms_mas": 4.468537410605439,
+      "photometric_rms_mag": 0.1155293537111377,
+      "measurement_test_matches": 3325,
+      "astrometric_rms_mas_ci95": [
+        4.3555884422879005,
+        4.569422386520384
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1126610449115321,
+        0.11852774255982453
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6388",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 14838,
+      "test_references": 6939,
+      "test_recovered": 3726,
+      "test_completeness": 0.5369649805447471,
+      "test_completeness_ci95": [
+        0.5252153376295732,
+        0.5486737166734947
+      ],
+      "test_catalog_match_lower_bound": 0.926779935275081,
+      "runtime_s": 108.73317960000713,
+      "runtime_s_per_mpix": 75.50915250000496,
+      "peak_rss_delta_mb": 57.0859375,
+      "recall_v_le_18": 0.9165275459098498,
+      "n_v_le_18": 599,
+      "recall_v_le_20": 0.824824355971897,
+      "n_v_le_20": 2135,
+      "recall_v_le_22": 0.5819147274714978,
+      "n_v_le_22": 6403,
+      "high_density_v20_recall": 0.8202764976958525,
+      "high_density_v20_n": 1519,
+      "high_density_v20_ci95": [
+        0.8001670055775082,
+        0.8387700972702207
+      ],
+      "astrometric_rms_px": 0.10867092681041304,
+      "astrometric_rms_mas": 5.433546340520652,
+      "photometric_rms_mag": 0.16835165977529465,
+      "measurement_test_matches": 3727,
+      "astrometric_rms_mas_ci95": [
+        5.301092258792065,
+        5.557493962570983
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1643657654500932,
+        0.17250086985049493
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6388",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 14265,
+      "test_references": 6939,
+      "test_recovered": 3610,
+      "test_completeness": 0.5202478743334774,
+      "test_completeness_ci95": [
+        0.5084849557972639,
+        0.5319883858385297
+      ],
+      "test_catalog_match_lower_bound": 0.9274752995585454,
+      "runtime_s": 126.79776980000315,
+      "runtime_s_per_mpix": 88.05400680555773,
+      "peak_rss_delta_mb": 51.03125,
+      "recall_v_le_18": 0.9065108514190318,
+      "n_v_le_18": 599,
+      "recall_v_le_20": 0.8107728337236534,
+      "n_v_le_20": 2135,
+      "recall_v_le_22": 0.5637982195845698,
+      "n_v_le_22": 6403,
+      "high_density_v20_recall": 0.8057932850559578,
+      "high_density_v20_n": 1519,
+      "high_density_v20_ci95": [
+        0.7851380592759276,
+        0.8249056905139389
+      ],
+      "astrometric_rms_px": 0.10874691215643068,
+      "astrometric_rms_mas": 5.437345607821534,
+      "photometric_rms_mag": 0.16680598218284304,
+      "measurement_test_matches": 3611,
+      "astrometric_rms_mas_ci95": [
+        5.3015097377523235,
+        5.566369184488425
+      ],
+      "photometric_rms_mag_ci95": [
+        0.16266902051493065,
+        0.1707676982114745
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6441",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 3852,
+      "test_references": 6829,
+      "test_recovered": 1042,
+      "test_completeness": 0.15258456582222873,
+      "test_completeness_ci95": [
+        0.14425138860584508,
+        0.16130839489623405
+      ],
+      "test_catalog_match_lower_bound": 0.9530516431924883,
+      "runtime_s": 0.1498736000212375,
+      "runtime_s_per_mpix": 0.10407888890363716,
+      "peak_rss_delta_mb": 36.48046875,
+      "recall_v_le_18": 0.5974025974025974,
+      "n_v_le_18": 616,
+      "recall_v_le_20": 0.44634920634920633,
+      "n_v_le_20": 1575,
+      "recall_v_le_22": 0.17811965811965813,
+      "n_v_le_22": 5850,
+      "high_density_v20_recall": 0.4585858585858586,
+      "high_density_v20_n": 990,
+      "high_density_v20_ci95": [
+        0.427766155212903,
+        0.4897257267932436
+      ],
+      "astrometric_rms_px": 0.06296373307337208,
+      "astrometric_rms_mas": 3.148186653668604,
+      "photometric_rms_mag": 0.16149040337243614,
+      "measurement_test_matches": 1043,
+      "astrometric_rms_mas_ci95": [
+        3.0084983893340924,
+        3.2887849993005696
+      ],
+      "photometric_rms_mag_ci95": [
+        0.154380798582748,
+        0.16890049326722273
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6441",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 7793,
+      "test_references": 6829,
+      "test_recovered": 2080,
+      "test_completeness": 0.3045833943476351,
+      "test_completeness_ci95": [
+        0.29378003924473134,
+        0.31560648597487856
+      ],
+      "test_catalog_match_lower_bound": 0.9517268445839875,
+      "runtime_s": 7.8128829000052065,
+      "runtime_s_per_mpix": 5.425613125003616,
+      "peak_rss_delta_mb": 3.0078125,
+      "recall_v_le_18": 0.5941558441558441,
+      "n_v_le_18": 616,
+      "recall_v_le_20": 0.633015873015873,
+      "n_v_le_20": 1575,
+      "recall_v_le_22": 0.35555555555555557,
+      "n_v_le_22": 5850,
+      "high_density_v20_recall": 0.697979797979798,
+      "high_density_v20_n": 990,
+      "high_density_v20_ci95": [
+        0.668658818733537,
+        0.725770233139518
+      ],
+      "astrometric_rms_px": 0.32640836631023806,
+      "astrometric_rms_mas": 16.320418315511905,
+      "photometric_rms_mag": 0.3528958197437367,
+      "measurement_test_matches": 2082,
+      "astrometric_rms_mas_ci95": [
+        15.801229873222065,
+        16.881908363818425
+      ],
+      "photometric_rms_mag_ci95": [
+        0.3414933491307874,
+        0.3636236874797855
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6441",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 3852,
+      "test_references": 6829,
+      "test_recovered": 1040,
+      "test_completeness": 0.15229169717381755,
+      "test_completeness_ci95": [
+        0.14396539379817097,
+        0.16100898172372025
+      ],
+      "test_catalog_match_lower_bound": 0.9538702111024238,
+      "runtime_s": 10.661108500004048,
+      "runtime_s_per_mpix": 7.403547569447255,
+      "peak_rss_delta_mb": 57.58984375,
+      "recall_v_le_18": 0.5957792207792207,
+      "n_v_le_18": 616,
+      "recall_v_le_20": 0.44571428571428573,
+      "n_v_le_20": 1575,
+      "recall_v_le_22": 0.17777777777777778,
+      "n_v_le_22": 5850,
+      "high_density_v20_recall": 0.4585858585858586,
+      "high_density_v20_n": 990,
+      "high_density_v20_ci95": [
+        0.427766155212903,
+        0.4897257267932436
+      ],
+      "astrometric_rms_px": 0.15324003155513916,
+      "astrometric_rms_mas": 7.662001577756958,
+      "photometric_rms_mag": 0.17901560865657334,
+      "measurement_test_matches": 1041,
+      "astrometric_rms_mas_ci95": [
+        7.302269696198022,
+        8.048221164707067
+      ],
+      "photometric_rms_mag_ci95": [
+        0.17066021437500087,
+        0.1870018044856491
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6441",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 6224,
+      "test_references": 6829,
+      "test_recovered": 1729,
+      "test_completeness": 0.25318494655147167,
+      "test_completeness_ci95": [
+        0.24301225151947048,
+        0.26363517317715934
+      ],
+      "test_catalog_match_lower_bound": 0.9672531769305963,
+      "runtime_s": 35.783754900010535,
+      "runtime_s_per_mpix": 24.849829791673983,
+      "peak_rss_delta_mb": 51.0703125,
+      "recall_v_le_18": 0.6233766233766234,
+      "n_v_le_18": 616,
+      "recall_v_le_20": 0.5034920634920635,
+      "n_v_le_20": 1575,
+      "recall_v_le_22": 0.29555555555555557,
+      "n_v_le_22": 5850,
+      "high_density_v20_recall": 0.5252525252525253,
+      "high_density_v20_n": 990,
+      "high_density_v20_ci95": [
+        0.4941082431061286,
+        0.5562015849389041
+      ],
+      "astrometric_rms_px": 0.2571037567660356,
+      "astrometric_rms_mas": 12.855187838301779,
+      "photometric_rms_mag": 0.20320290796078147,
+      "measurement_test_matches": 1731,
+      "astrometric_rms_mas_ci95": [
+        12.39001740637196,
+        13.362374794092869
+      ],
+      "photometric_rms_mag_ci95": [
+        0.19608189977441912,
+        0.20980205267382115
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6441",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 14031,
+      "test_references": 6829,
+      "test_recovered": 3648,
+      "test_completeness": 0.5341924147020062,
+      "test_completeness_ci95": [
+        0.5223452782864457,
+        0.5460011034004941
+      ],
+      "test_catalog_match_lower_bound": 0.9443254817987152,
+      "runtime_s": 133.93662049999693,
+      "runtime_s_per_mpix": 93.01154201388675,
+      "peak_rss_delta_mb": 51.3203125,
+      "recall_v_le_18": 0.922077922077922,
+      "n_v_le_18": 616,
+      "recall_v_le_20": 0.8647619047619047,
+      "n_v_le_20": 1575,
+      "recall_v_le_22": 0.6235897435897436,
+      "n_v_le_22": 5850,
+      "high_density_v20_recall": 0.8626262626262626,
+      "high_density_v20_n": 990,
+      "high_density_v20_ci95": [
+        0.8397764024462803,
+        0.8826727282803867
+      ],
+      "astrometric_rms_px": 0.12298727019460547,
+      "astrometric_rms_mas": 6.149363509730273,
+      "photometric_rms_mag": 0.19225599374426836,
+      "measurement_test_matches": 3650,
+      "astrometric_rms_mas_ci95": [
+        6.004739611303787,
+        6.302896709831707
+      ],
+      "photometric_rms_mag_ci95": [
+        0.18733200409964046,
+        0.19706556995847138
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0104",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 3923,
+      "test_references": 5389,
+      "test_recovered": 1193,
+      "test_completeness": 0.22137687882724066,
+      "test_completeness_ci95": [
+        0.21049262854169085,
+        0.2326580844330792
+      ],
+      "test_catalog_match_lower_bound": 0.9564237415477085,
+      "runtime_s": 0.15625960001489148,
+      "runtime_s_per_mpix": 0.10851361112145241,
+      "peak_rss_delta_mb": 36.2265625,
+      "recall_v_le_18": 0.44263018534863197,
+      "n_v_le_18": 2266,
+      "recall_v_le_20": 0.2482313774448606,
+      "n_v_le_20": 4806,
+      "recall_v_le_22": 0.22257462686567164,
+      "n_v_le_22": 5360,
+      "high_density_v20_recall": 0.1871787118234049,
+      "high_density_v20_n": 3307,
+      "high_density_v20_ci95": [
+        0.17425016187523928,
+        0.20083320061482968
+      ],
+      "astrometric_rms_px": 0.037954526292727275,
+      "astrometric_rms_mas": 1.8977263146363637,
+      "photometric_rms_mag": 0.11383293723798793,
+      "measurement_test_matches": 1194,
+      "astrometric_rms_mas_ci95": [
+        1.8144812567474142,
+        1.9779976336829657
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1083992656483905,
+        0.11947590402021255
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0104",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 9459,
+      "test_references": 5389,
+      "test_recovered": 2757,
+      "test_completeness": 0.5115976990165151,
+      "test_completeness_ci95": [
+        0.49824806627970325,
+        0.5249308084715966
+      ],
+      "test_catalog_match_lower_bound": 0.9398960363872645,
+      "runtime_s": 13.731418799987296,
+      "runtime_s_per_mpix": 9.535707499991178,
+      "peak_rss_delta_mb": 11.375,
+      "recall_v_le_18": 0.6650485436893204,
+      "n_v_le_18": 2266,
+      "recall_v_le_20": 0.5736579275905118,
+      "n_v_le_20": 4806,
+      "recall_v_le_22": 0.514365671641791,
+      "n_v_le_22": 5360,
+      "high_density_v20_recall": 0.53371635923798,
+      "high_density_v20_n": 3307,
+      "high_density_v20_ci95": [
+        0.5166843039621635,
+        0.5506701717095207
+      ],
+      "astrometric_rms_px": 0.12620586711176504,
+      "astrometric_rms_mas": 6.310293355588252,
+      "photometric_rms_mag": 0.2652525316742934,
+      "measurement_test_matches": 2761,
+      "astrometric_rms_mas_ci95": [
+        6.083618022602771,
+        6.538865628054485
+      ],
+      "photometric_rms_mag_ci95": [
+        0.25754388642049186,
+        0.273013429783939
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0104",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 3923,
+      "test_references": 5389,
+      "test_recovered": 1195,
+      "test_completeness": 0.22174800519576915,
+      "test_completeness_ci95": [
+        0.2108568552773886,
+        0.23303558168942304
+      ],
+      "test_catalog_match_lower_bound": 0.9564891222805701,
+      "runtime_s": 11.19724189999397,
+      "runtime_s_per_mpix": 7.775862430551367,
+      "peak_rss_delta_mb": 68.12890625,
+      "recall_v_le_18": 0.44263018534863197,
+      "n_v_le_18": 2266,
+      "recall_v_le_20": 0.2486475239284228,
+      "n_v_le_20": 4806,
+      "recall_v_le_22": 0.22294776119402984,
+      "n_v_le_22": 5360,
+      "high_density_v20_recall": 0.18808587843967342,
+      "high_density_v20_n": 3307,
+      "high_density_v20_ci95": [
+        0.17513159022430627,
+        0.20176400031074074
+      ],
+      "astrometric_rms_px": 0.0863473886906648,
+      "astrometric_rms_mas": 4.31736943453324,
+      "photometric_rms_mag": 0.12147486958365354,
+      "measurement_test_matches": 1196,
+      "astrometric_rms_mas_ci95": [
+        4.059196995670806,
+        4.552353093794776
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1155366300726477,
+        0.127222489957493
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0104",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 6344,
+      "test_references": 5389,
+      "test_recovered": 1923,
+      "test_completeness": 0.3568380033401373,
+      "test_completeness_ci95": [
+        0.3441533346644026,
+        0.3697266354055508
+      ],
+      "test_catalog_match_lower_bound": 0.9670433145009416,
+      "runtime_s": 32.49597150000045,
+      "runtime_s_per_mpix": 22.566646875000313,
+      "peak_rss_delta_mb": 53.68359375,
+      "recall_v_le_18": 0.5909090909090909,
+      "n_v_le_18": 2266,
+      "recall_v_le_20": 0.40012484394506864,
+      "n_v_le_20": 4806,
+      "recall_v_le_22": 0.3587686567164179,
+      "n_v_le_22": 5360,
+      "high_density_v20_recall": 0.341699425461143,
+      "high_density_v20_n": 3307,
+      "high_density_v20_ci95": [
+        0.32572653264884516,
+        0.35803967350248495
+      ],
+      "astrometric_rms_px": 0.0625308230749344,
+      "astrometric_rms_mas": 3.1265411537467203,
+      "photometric_rms_mag": 0.07244975580523498,
+      "measurement_test_matches": 1924,
+      "astrometric_rms_mas_ci95": [
+        2.987158089449754,
+        3.256162960461461
+      ],
+      "photometric_rms_mag_ci95": [
+        0.06965617339254758,
+        0.07532178258423868
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0104",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 12017,
+      "test_references": 5389,
+      "test_recovered": 3431,
+      "test_completeness": 0.6366672852106142,
+      "test_completeness_ci95": [
+        0.6237327909094292,
+        0.6494070691598892
+      ],
+      "test_catalog_match_lower_bound": 0.9487569761542364,
+      "runtime_s": 97.37195800000336,
+      "runtime_s_per_mpix": 67.61941527778012,
+      "peak_rss_delta_mb": 51.7109375,
+      "recall_v_le_18": 0.8896734333627537,
+      "n_v_le_18": 2266,
+      "recall_v_le_20": 0.713899292550978,
+      "n_v_le_20": 4806,
+      "recall_v_le_22": 0.6401119402985075,
+      "n_v_le_22": 5360,
+      "high_density_v20_recall": 0.6713032960387058,
+      "high_density_v20_n": 3307,
+      "high_density_v20_ci95": [
+        0.6551024143294957,
+        0.6871066481638595
+      ],
+      "astrometric_rms_px": 0.04225248295032879,
+      "astrometric_rms_mas": 2.1126241475164393,
+      "photometric_rms_mag": 0.08010815959195446,
+      "measurement_test_matches": 3432,
+      "astrometric_rms_mas_ci95": [
+        2.058563089348213,
+        2.1655368110851922
+      ],
+      "photometric_rms_mag_ci95": [
+        0.07781500685595219,
+        0.08218848646713181
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0362",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 3363,
+      "test_references": 5103,
+      "test_recovered": 1038,
+      "test_completeness": 0.20340975896531452,
+      "test_completeness_ci95": [
+        0.19259025294438245,
+        0.2146754824956986
+      ],
+      "test_catalog_match_lower_bound": 0.965034965034965,
+      "runtime_s": 0.20875710001564585,
+      "runtime_s_per_mpix": 0.1449702083441985,
+      "peak_rss_delta_mb": 39.8671875,
+      "recall_v_le_18": 0.7483870967741936,
+      "n_v_le_18": 465,
+      "recall_v_le_20": 0.34291377601585726,
+      "n_v_le_20": 3027,
+      "recall_v_le_22": 0.22014846235418875,
+      "n_v_le_22": 4715,
+      "high_density_v20_recall": 0.25199203187250996,
+      "high_density_v20_n": 2008,
+      "high_density_v20_ci95": [
+        0.23348801612980172,
+        0.27144318720151417
+      ],
+      "astrometric_rms_px": 0.0351613373835942,
+      "astrometric_rms_mas": 1.75806686917971,
+      "photometric_rms_mag": 0.256796309841653,
+      "measurement_test_matches": 1038,
+      "astrometric_rms_mas_ci95": [
+        1.6858354022510897,
+        1.835071391141246
+      ],
+      "photometric_rms_mag_ci95": [
+        0.24368311594962902,
+        0.2684888859912678
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0362",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 7204,
+      "test_references": 5103,
+      "test_recovered": 2151,
+      "test_completeness": 0.42151675485008816,
+      "test_completeness_ci95": [
+        0.40803210938223966,
+        0.4351194776965529
+      ],
+      "test_catalog_match_lower_bound": 0.9300291545189504,
+      "runtime_s": 10.44173329998739,
+      "runtime_s_per_mpix": 7.251203680546799,
+      "peak_rss_delta_mb": 15.02734375,
+      "recall_v_le_18": 0.4967741935483871,
+      "n_v_le_18": 465,
+      "recall_v_le_20": 0.5067723818962669,
+      "n_v_le_20": 3027,
+      "recall_v_le_22": 0.456203605514316,
+      "n_v_le_22": 4715,
+      "high_density_v20_recall": 0.42380478087649404,
+      "high_density_v20_n": 2008,
+      "high_density_v20_ci95": [
+        0.40235609167596037,
+        0.44554445874510645
+      ],
+      "astrometric_rms_px": 0.11510112074181018,
+      "astrometric_rms_mas": 5.755056037090509,
+      "photometric_rms_mag": 0.29262319419259597,
+      "measurement_test_matches": 2155,
+      "astrometric_rms_mas_ci95": [
+        5.548355290108847,
+        5.981785223993286
+      ],
+      "photometric_rms_mag_ci95": [
+        0.28356375250306326,
+        0.30130718869435535
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0362",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 3331,
+      "test_references": 5103,
+      "test_recovered": 1017,
+      "test_completeness": 0.19929453262786595,
+      "test_completeness_ci95": [
+        0.18856210087861286,
+        0.21047937320979437
+      ],
+      "test_catalog_match_lower_bound": 0.9627989371124889,
+      "runtime_s": 10.129914300021483,
+      "runtime_s_per_mpix": 7.034662708348252,
+      "peak_rss_delta_mb": 41.140625,
+      "recall_v_le_18": 0.7462365591397849,
+      "n_v_le_18": 465,
+      "recall_v_le_20": 0.33597621407333994,
+      "n_v_le_20": 3027,
+      "recall_v_le_22": 0.21569459172852598,
+      "n_v_le_22": 4715,
+      "high_density_v20_recall": 0.2495019920318725,
+      "high_density_v20_n": 2008,
+      "high_density_v20_ci95": [
+        0.23106516325087828,
+        0.26889546983276
+      ],
+      "astrometric_rms_px": 0.07792758449939002,
+      "astrometric_rms_mas": 3.8963792249695013,
+      "photometric_rms_mag": 0.25706219747219333,
+      "measurement_test_matches": 1018,
+      "astrometric_rms_mas_ci95": [
+        3.6720533793874024,
+        4.148313717062527
+      ],
+      "photometric_rms_mag_ci95": [
+        0.2444210155501726,
+        0.2689402809395387
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0362",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 5800,
+      "test_references": 5103,
+      "test_recovered": 1764,
+      "test_completeness": 0.345679012345679,
+      "test_completeness_ci95": [
+        0.33275055248992014,
+        0.3588396468223124
+      ],
+      "test_catalog_match_lower_bound": 0.9520686175580222,
+      "runtime_s": 27.22642680001445,
+      "runtime_s_per_mpix": 18.90724083334337,
+      "peak_rss_delta_mb": 56.75390625,
+      "recall_v_le_18": 0.9354838709677419,
+      "n_v_le_18": 465,
+      "recall_v_le_20": 0.5827552031714569,
+      "n_v_le_20": 3027,
+      "recall_v_le_22": 0.37412513255567337,
+      "n_v_le_22": 4715,
+      "high_density_v20_recall": 0.5194223107569721,
+      "high_density_v20_n": 2008,
+      "high_density_v20_ci95": [
+        0.4975528024136578,
+        0.5412176455182272
+      ],
+      "astrometric_rms_px": 0.09089876340561563,
+      "astrometric_rms_mas": 4.544938170280782,
+      "photometric_rms_mag": 0.08931223031098426,
+      "measurement_test_matches": 1764,
+      "astrometric_rms_mas_ci95": [
+        4.348355565767171,
+        4.72421879731548
+      ],
+      "photometric_rms_mag_ci95": [
+        0.08594406947617673,
+        0.09281818608340628
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc0362",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 8127,
+      "test_references": 5103,
+      "test_recovered": 2357,
+      "test_completeness": 0.4618851655888693,
+      "test_completeness_ci95": [
+        0.44824016015464163,
+        0.4755875144691416
+      ],
+      "test_catalog_match_lower_bound": 0.9391524809851504,
+      "runtime_s": 59.32544869999401,
+      "runtime_s_per_mpix": 41.19822826388473,
+      "peak_rss_delta_mb": 53.6796875,
+      "recall_v_le_18": 0.9870967741935484,
+      "n_v_le_18": 465,
+      "recall_v_le_20": 0.7786587380244466,
+      "n_v_le_20": 3027,
+      "recall_v_le_22": 0.4998939554612937,
+      "n_v_le_22": 4715,
+      "high_density_v20_recall": 0.7514940239043825,
+      "high_density_v20_n": 2008,
+      "high_density_v20_ci95": [
+        0.7321238500462665,
+        0.769903744969166
+      ],
+      "astrometric_rms_px": 0.04923284033373279,
+      "astrometric_rms_mas": 2.4616420166866395,
+      "photometric_rms_mag": 0.09588860886738045,
+      "measurement_test_matches": 2359,
+      "astrometric_rms_mas_ci95": [
+        2.378405882657112,
+        2.5376072837261145
+      ],
+      "photometric_rms_mag_ci95": [
+        0.09287580026714756,
+        0.09917322137188424
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6093",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 4835,
+      "test_references": 5722,
+      "test_recovered": 1468,
+      "test_completeness": 0.2565536525690318,
+      "test_completeness_ci95": [
+        0.24540352265262816,
+        0.2680304500929677
+      ],
+      "test_catalog_match_lower_bound": 0.9671623296158612,
+      "runtime_s": 0.15042300001368858,
+      "runtime_s_per_mpix": 0.10446041667617262,
+      "peak_rss_delta_mb": 40.48828125,
+      "recall_v_le_18": 0.85,
+      "n_v_le_18": 300,
+      "recall_v_le_20": 0.632,
+      "n_v_le_20": 1875,
+      "recall_v_le_22": 0.31529209621993126,
+      "n_v_le_22": 4656,
+      "high_density_v20_recall": 0.5667166416791605,
+      "high_density_v20_n": 1334,
+      "high_density_v20_ci95": [
+        0.539970817060544,
+        0.5930793138368657
+      ],
+      "astrometric_rms_px": 0.054308579706668914,
+      "astrometric_rms_mas": 2.7154289853334457,
+      "photometric_rms_mag": 0.3516999934036264,
+      "measurement_test_matches": 1469,
+      "astrometric_rms_mas_ci95": [
+        2.6122909992423917,
+        2.8155022410400976
+      ],
+      "photometric_rms_mag_ci95": [
+        0.3377408181677926,
+        0.3656659307035184
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6093",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 8438,
+      "test_references": 5722,
+      "test_recovered": 2538,
+      "test_completeness": 0.4435512058720727,
+      "test_completeness_ci95": [
+        0.4307207314071963,
+        0.4564574259487458
+      ],
+      "test_catalog_match_lower_bound": 0.9360257326661902,
+      "runtime_s": 10.31758470000932,
+      "runtime_s_per_mpix": 7.164989375006472,
+      "peak_rss_delta_mb": 7.5703125,
+      "recall_v_le_18": 0.49666666666666665,
+      "n_v_le_18": 300,
+      "recall_v_le_20": 0.5248,
+      "n_v_le_20": 1875,
+      "recall_v_le_22": 0.5420962199312714,
+      "n_v_le_22": 4656,
+      "high_density_v20_recall": 0.4775112443778111,
+      "high_density_v20_n": 1334,
+      "high_density_v20_ci95": [
+        0.45080971036220635,
+        0.5043419309083299
+      ],
+      "astrometric_rms_px": 0.12802031869352412,
+      "astrometric_rms_mas": 6.401015934676206,
+      "photometric_rms_mag": 0.29544621543881106,
+      "measurement_test_matches": 2541,
+      "astrometric_rms_mas_ci95": [
+        6.177392870666177,
+        6.616806741333589
+      ],
+      "photometric_rms_mag_ci95": [
+        0.2875370999118103,
+        0.30360506813556526
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6093",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 4787,
+      "test_references": 5722,
+      "test_recovered": 1452,
+      "test_completeness": 0.2537574274729116,
+      "test_completeness_ci95": [
+        0.2426498206585188,
+        0.2651954539994459
+      ],
+      "test_catalog_match_lower_bound": 0.966895690193629,
+      "runtime_s": 13.259299500001362,
+      "runtime_s_per_mpix": 9.207846875000946,
+      "peak_rss_delta_mb": 86.734375,
+      "recall_v_le_18": 0.85,
+      "n_v_le_18": 300,
+      "recall_v_le_20": 0.6304,
+      "n_v_le_20": 1875,
+      "recall_v_le_22": 0.3118556701030928,
+      "n_v_le_22": 4656,
+      "high_density_v20_recall": 0.5659670164917541,
+      "high_density_v20_n": 1334,
+      "high_density_v20_ci95": [
+        0.5392179825937711,
+        0.5923372030126564
+      ],
+      "astrometric_rms_px": 0.06129632213200377,
+      "astrometric_rms_mas": 3.0648161066001887,
+      "photometric_rms_mag": 0.2098259991013284,
+      "measurement_test_matches": 1452,
+      "astrometric_rms_mas_ci95": [
+        2.92687160498662,
+        3.192211289442899
+      ],
+      "photometric_rms_mag_ci95": [
+        0.20042046361664878,
+        0.2184322665856611
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6093",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 7292,
+      "test_references": 5722,
+      "test_recovered": 2053,
+      "test_completeness": 0.358790632645928,
+      "test_completeness_ci95": [
+        0.346461142481657,
+        0.37130960409295993
+      ],
+      "test_catalog_match_lower_bound": 0.9484240687679083,
+      "runtime_s": 37.55915849999292,
+      "runtime_s_per_mpix": 26.082748958328416,
+      "peak_rss_delta_mb": 51.9140625,
+      "recall_v_le_18": 0.9633333333333334,
+      "n_v_le_18": 300,
+      "recall_v_le_20": 0.8384,
+      "n_v_le_20": 1875,
+      "recall_v_le_22": 0.4409364261168385,
+      "n_v_le_22": 4656,
+      "high_density_v20_recall": 0.8110944527736131,
+      "high_density_v20_n": 1334,
+      "high_density_v20_ci95": [
+        0.78920665991289,
+        0.8311956358446944
+      ],
+      "astrometric_rms_px": 0.054543963943682716,
+      "astrometric_rms_mas": 2.7271981971841357,
+      "photometric_rms_mag": 0.08327939602206909,
+      "measurement_test_matches": 2053,
+      "astrometric_rms_mas_ci95": [
+        2.626418295288505,
+        2.823934708711537
+      ],
+      "photometric_rms_mag_ci95": [
+        0.07991639081636709,
+        0.08630029663641801
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6093",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 8874,
+      "test_references": 5722,
+      "test_recovered": 2384,
+      "test_completeness": 0.41663753932191544,
+      "test_completeness_ci95": [
+        0.40392352461423126,
+        0.4294634136482592
+      ],
+      "test_catalog_match_lower_bound": 0.9248322147651007,
+      "runtime_s": 65.73593910000636,
+      "runtime_s_per_mpix": 45.64995770833775,
+      "peak_rss_delta_mb": 50.90625,
+      "recall_v_le_18": 0.9833333333333333,
+      "n_v_le_18": 300,
+      "recall_v_le_20": 0.9290666666666667,
+      "n_v_le_20": 1875,
+      "recall_v_le_22": 0.5120274914089347,
+      "n_v_le_22": 4656,
+      "high_density_v20_recall": 0.9167916041979011,
+      "high_density_v20_n": 1334,
+      "high_density_v20_ci95": [
+        0.9007461090136614,
+        0.9304434727724037
+      ],
+      "astrometric_rms_px": 0.048834345084393244,
+      "astrometric_rms_mas": 2.4417172542196623,
+      "photometric_rms_mag": 0.08746578391054588,
+      "measurement_test_matches": 2385,
+      "astrometric_rms_mas_ci95": [
+        2.367878021714071,
+        2.519413992936286
+      ],
+      "photometric_rms_mag_ci95": [
+        0.08448480855252784,
+        0.0902898248372824
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6624",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 4957,
+      "test_references": 3447,
+      "test_recovered": 1585,
+      "test_completeness": 0.4598201334493763,
+      "test_completeness_ci95": [
+        0.4432361623410573,
+        0.47649356387993186
+      ],
+      "test_catalog_match_lower_bound": 0.9750593824228029,
+      "runtime_s": 0.15444579999893904,
+      "runtime_s_per_mpix": 0.10725402777704099,
+      "peak_rss_delta_mb": 36.18359375,
+      "recall_v_le_18": 0.9411764705882353,
+      "n_v_le_18": 153,
+      "recall_v_le_20": 0.7928949357520786,
+      "n_v_le_20": 1323,
+      "recall_v_le_22": 0.5717893217893217,
+      "n_v_le_22": 2772,
+      "high_density_v20_recall": 0.6805555555555556,
+      "high_density_v20_n": 648,
+      "high_density_v20_ci95": [
+        0.6436812947004145,
+        0.7153016238491228
+      ],
+      "astrometric_rms_px": 0.04867406244333151,
+      "astrometric_rms_mas": 2.4337031221665755,
+      "photometric_rms_mag": 0.20002708500190172,
+      "measurement_test_matches": 1585,
+      "astrometric_rms_mas_ci95": [
+        2.3463437405514282,
+        2.5167691987405925
+      ],
+      "photometric_rms_mag_ci95": [
+        0.19216517484050014,
+        0.20771339771955952
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6624",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 5500,
+      "test_references": 3447,
+      "test_recovered": 1676,
+      "test_completeness": 0.4862199013635045,
+      "test_completeness_ci95": [
+        0.4695589784271929,
+        0.5029115052948071
+      ],
+      "test_catalog_match_lower_bound": 0.9363686231486561,
+      "runtime_s": 9.177196699980414,
+      "runtime_s_per_mpix": 6.373053263875287,
+      "peak_rss_delta_mb": 11.79296875,
+      "recall_v_le_18": 0.46405228758169936,
+      "n_v_le_18": 153,
+      "recall_v_le_20": 0.491307634164777,
+      "n_v_le_20": 1323,
+      "recall_v_le_22": 0.5238095238095238,
+      "n_v_le_22": 2772,
+      "high_density_v20_recall": 0.26080246913580246,
+      "high_density_v20_n": 648,
+      "high_density_v20_ci95": [
+        0.22847562344965736,
+        0.2959487152240326
+      ],
+      "astrometric_rms_px": 0.061789485898386586,
+      "astrometric_rms_mas": 3.0894742949193295,
+      "photometric_rms_mag": 0.1440195769709741,
+      "measurement_test_matches": 1680,
+      "astrometric_rms_mas_ci95": [
+        2.958903337160248,
+        3.2192505407913474
+      ],
+      "photometric_rms_mag_ci95": [
+        0.13769559429158496,
+        0.15003451636961507
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6624",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 4956,
+      "test_references": 3447,
+      "test_recovered": 1585,
+      "test_completeness": 0.4598201334493763,
+      "test_completeness_ci95": [
+        0.4432361623410573,
+        0.47649356387993186
+      ],
+      "test_catalog_match_lower_bound": 0.9756387403446227,
+      "runtime_s": 13.38630860002013,
+      "runtime_s_per_mpix": 9.296047638902868,
+      "peak_rss_delta_mb": 93.35546875,
+      "recall_v_le_18": 0.9411764705882353,
+      "n_v_le_18": 153,
+      "recall_v_le_20": 0.7928949357520786,
+      "n_v_le_20": 1323,
+      "recall_v_le_22": 0.5717893217893217,
+      "n_v_le_22": 2772,
+      "high_density_v20_recall": 0.6805555555555556,
+      "high_density_v20_n": 648,
+      "high_density_v20_ci95": [
+        0.6436812947004145,
+        0.7153016238491228
+      ],
+      "astrometric_rms_px": 0.026978489582826122,
+      "astrometric_rms_mas": 1.3489244791413062,
+      "photometric_rms_mag": 0.10605050445514111,
+      "measurement_test_matches": 1585,
+      "astrometric_rms_mas_ci95": [
+        1.2924577854889632,
+        1.405451885229858
+      ],
+      "photometric_rms_mag_ci95": [
+        0.10209818008656003,
+        0.11004844784827453
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6624",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 6690,
+      "test_references": 3447,
+      "test_recovered": 2012,
+      "test_completeness": 0.5836959675079779,
+      "test_completeness_ci95": [
+        0.567155321142734,
+        0.6000502671983825
+      ],
+      "test_catalog_match_lower_bound": 0.948471615720524,
+      "runtime_s": 37.5858022000175,
+      "runtime_s_per_mpix": 26.10125152778993,
+      "peak_rss_delta_mb": 49.60546875,
+      "recall_v_le_18": 0.9869281045751634,
+      "n_v_le_18": 153,
+      "recall_v_le_20": 0.9470899470899471,
+      "n_v_le_20": 1323,
+      "recall_v_le_22": 0.7258297258297258,
+      "n_v_le_22": 2772,
+      "high_density_v20_recall": 0.9120370370370371,
+      "high_density_v20_n": 648,
+      "high_density_v20_ci95": [
+        0.887729452605166,
+        0.9314879769053164
+      ],
+      "astrometric_rms_px": 0.031133674670525094,
+      "astrometric_rms_mas": 1.5566837335262547,
+      "photometric_rms_mag": 0.05918167738137769,
+      "measurement_test_matches": 2015,
+      "astrometric_rms_mas_ci95": [
+        1.503629172162829,
+        1.6074922074893656
+      ],
+      "photometric_rms_mag_ci95": [
+        0.056820800277641526,
+        0.061309996219566495
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6624",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 6760,
+      "test_references": 3447,
+      "test_recovered": 2030,
+      "test_completeness": 0.5889178996228605,
+      "test_completeness_ci95": [
+        0.572401938900539,
+        0.6052358871880301
+      ],
+      "test_catalog_match_lower_bound": 0.9500860585197934,
+      "runtime_s": 52.286504199990304,
+      "runtime_s_per_mpix": 36.310072361104375,
+      "peak_rss_delta_mb": 52.40234375,
+      "recall_v_le_18": 0.9934640522875817,
+      "n_v_le_18": 153,
+      "recall_v_le_20": 0.9531368102796675,
+      "n_v_le_20": 1323,
+      "recall_v_le_22": 0.7323232323232324,
+      "n_v_le_22": 2772,
+      "high_density_v20_recall": 0.9228395061728395,
+      "high_density_v20_n": 648,
+      "high_density_v20_ci95": [
+        0.8997110503987488,
+        0.9409839896232443
+      ],
+      "astrometric_rms_px": 0.030052599500687033,
+      "astrometric_rms_mas": 1.5026299750343517,
+      "photometric_rms_mag": 0.05833431470803104,
+      "measurement_test_matches": 2031,
+      "astrometric_rms_mas_ci95": [
+        1.4519239205496286,
+        1.552297063811178
+      ],
+      "photometric_rms_mag_ci95": [
+        0.056188865497964674,
+        0.060623178285384556
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6397",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 2554,
+      "test_references": 631,
+      "test_recovered": 602,
+      "test_completeness": 0.9540412044374009,
+      "test_completeness_ci95": [
+        0.9347747009094425,
+        0.9678126531643927
+      ],
+      "test_catalog_match_lower_bound": 0.8576512455516014,
+      "runtime_s": 0.2009156999993138,
+      "runtime_s_per_mpix": 0.13952479166619014,
+      "peak_rss_delta_mb": 39.86328125,
+      "recall_v_le_18": 0.9798387096774194,
+      "n_v_le_18": 248,
+      "recall_v_le_20": 0.9597457627118644,
+      "n_v_le_20": 472,
+      "recall_v_le_22": 0.9533011272141707,
+      "n_v_le_22": 621,
+      "high_density_v20_recall": 0.5555555555555556,
+      "high_density_v20_n": 9,
+      "high_density_v20_ci95": [
+        0.2666473457440297,
+        0.811224570528086
+      ],
+      "astrometric_rms_px": 0.03675957779228953,
+      "astrometric_rms_mas": 1.8379788896144764,
+      "photometric_rms_mag": 0.030221954246463182,
+      "measurement_test_matches": 605,
+      "astrometric_rms_mas_ci95": [
+        1.7395963455407468,
+        1.9281893871831954
+      ],
+      "photometric_rms_mag_ci95": [
+        0.02791194419348665,
+        0.03224087093444226
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6397",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 1790,
+      "test_references": 631,
+      "test_recovered": 480,
+      "test_completeness": 0.7606973058637084,
+      "test_completeness_ci95": [
+        0.725892600958137,
+        0.7923469094961244
+      ],
+      "test_catalog_match_lower_bound": 0.9429065743944637,
+      "runtime_s": 3.2489128000161145,
+      "runtime_s_per_mpix": 2.256189444455635,
+      "peak_rss_delta_mb": 8.91796875,
+      "recall_v_le_18": 0.8266129032258065,
+      "n_v_le_18": 248,
+      "recall_v_le_20": 0.777542372881356,
+      "n_v_le_20": 472,
+      "recall_v_le_22": 0.7600644122383253,
+      "n_v_le_22": 621,
+      "high_density_v20_recall": 0.6666666666666666,
+      "high_density_v20_n": 9,
+      "high_density_v20_ci95": [
+        0.35419734749908977,
+        0.879418401317257
+      ],
+      "astrometric_rms_px": 0.05009125663628478,
+      "astrometric_rms_mas": 2.504562831814239,
+      "photometric_rms_mag": 0.0864224730597228,
+      "measurement_test_matches": 483,
+      "astrometric_rms_mas_ci95": [
+        2.347431778260027,
+        2.655088103260301
+      ],
+      "photometric_rms_mag_ci95": [
+        0.07951394613660678,
+        0.09250517547429064
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6397",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 2554,
+      "test_references": 631,
+      "test_recovered": 602,
+      "test_completeness": 0.9540412044374009,
+      "test_completeness_ci95": [
+        0.9347747009094425,
+        0.9678126531643927
+      ],
+      "test_catalog_match_lower_bound": 0.8517200474495848,
+      "runtime_s": 7.785719200008316,
+      "runtime_s_per_mpix": 5.406749444450219,
+      "peak_rss_delta_mb": 40.41015625,
+      "recall_v_le_18": 0.9798387096774194,
+      "n_v_le_18": 248,
+      "recall_v_le_20": 0.9597457627118644,
+      "n_v_le_20": 472,
+      "recall_v_le_22": 0.9533011272141707,
+      "n_v_le_22": 621,
+      "high_density_v20_recall": 0.5555555555555556,
+      "high_density_v20_n": 9,
+      "high_density_v20_ci95": [
+        0.2666473457440297,
+        0.811224570528086
+      ],
+      "astrometric_rms_px": 0.01965336653257413,
+      "astrometric_rms_mas": 0.9826683266287064,
+      "photometric_rms_mag": 0.04012284892661982,
+      "measurement_test_matches": 605,
+      "astrometric_rms_mas_ci95": [
+        0.9315543780455844,
+        1.0323017088361044
+      ],
+      "photometric_rms_mag_ci95": [
+        0.037395235549454245,
+        0.042617785127612044
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6397",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 3094,
+      "test_references": 631,
+      "test_recovered": 625,
+      "test_completeness": 0.9904912836767037,
+      "test_completeness_ci95": [
+        0.9794113246228593,
+        0.9956350491497481
+      ],
+      "test_catalog_match_lower_bound": 0.7449470644850819,
+      "runtime_s": 19.881076999998186,
+      "runtime_s_per_mpix": 13.806303472220963,
+      "peak_rss_delta_mb": 55.85546875,
+      "recall_v_le_18": 1.0,
+      "n_v_le_18": 248,
+      "recall_v_le_20": 0.9915254237288136,
+      "n_v_le_20": 472,
+      "recall_v_le_22": 0.9903381642512077,
+      "n_v_le_22": 621,
+      "high_density_v20_recall": 0.6666666666666666,
+      "high_density_v20_n": 9,
+      "high_density_v20_ci95": [
+        0.35419734749908977,
+        0.879418401317257
+      ],
+      "astrometric_rms_px": 0.0221197855898309,
+      "astrometric_rms_mas": 1.105989279491545,
+      "photometric_rms_mag": 0.03543195584312782,
+      "measurement_test_matches": 626,
+      "astrometric_rms_mas_ci95": [
+        1.0533442679527858,
+        1.1654757991630786
+      ],
+      "photometric_rms_mag_ci95": [
+        0.03336247874405408,
+        0.03748097816344755
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6397",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 3078,
+      "test_references": 631,
+      "test_recovered": 624,
+      "test_completeness": 0.9889064976228209,
+      "test_completeness_ci95": [
+        0.9772797803704316,
+        0.9946162012413593
+      ],
+      "test_catalog_match_lower_bound": 0.746615087040619,
+      "runtime_s": 24.63306740002008,
+      "runtime_s_per_mpix": 17.1062968055695,
+      "peak_rss_delta_mb": 56.23046875,
+      "recall_v_le_18": 0.9959677419354839,
+      "n_v_le_18": 248,
+      "recall_v_le_20": 0.989406779661017,
+      "n_v_le_20": 472,
+      "recall_v_le_22": 0.9887278582930756,
+      "n_v_le_22": 621,
+      "high_density_v20_recall": 0.6666666666666666,
+      "high_density_v20_n": 9,
+      "high_density_v20_ci95": [
+        0.35419734749908977,
+        0.879418401317257
+      ],
+      "astrometric_rms_px": 0.022075871936684362,
+      "astrometric_rms_mas": 1.103793596834218,
+      "photometric_rms_mag": 0.030247636786035523,
+      "measurement_test_matches": 626,
+      "astrometric_rms_mas_ci95": [
+        1.0521695305510634,
+        1.1568879382264283
+      ],
+      "photometric_rms_mag_ci95": [
+        0.028289979288151072,
+        0.03217643912876832
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6752",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 5628,
+      "test_references": 2291,
+      "test_recovered": 1746,
+      "test_completeness": 0.7621126145787865,
+      "test_completeness_ci95": [
+        0.744247232364672,
+        0.7791004357271039
+      ],
+      "test_catalog_match_lower_bound": 0.9416362688900469,
+      "runtime_s": 0.1917267999961041,
+      "runtime_s_per_mpix": 0.1331436111084056,
+      "peak_rss_delta_mb": 39.86328125,
+      "recall_v_le_18": 0.8789115646258503,
+      "n_v_le_18": 735,
+      "recall_v_le_20": 0.8001165501165501,
+      "n_v_le_20": 1716,
+      "recall_v_le_22": 0.7777270652670014,
+      "n_v_le_22": 2191,
+      "high_density_v20_recall": 0.5696517412935324,
+      "high_density_v20_n": 402,
+      "high_density_v20_ci95": [
+        0.5208161610606955,
+        0.6171687079128153
+      ],
+      "astrometric_rms_px": 0.0426807928435367,
+      "astrometric_rms_mas": 2.134039642176835,
+      "photometric_rms_mag": 0.05750013138149963,
+      "measurement_test_matches": 1746,
+      "astrometric_rms_mas_ci95": [
+        2.063914234106897,
+        2.2002094400335563
+      ],
+      "photometric_rms_mag_ci95": [
+        0.05512785614103039,
+        0.05997601710535735
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6752",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 4048,
+      "test_references": 2291,
+      "test_recovered": 1192,
+      "test_completeness": 0.5202968136185072,
+      "test_completeness_ci95": [
+        0.4998223042438506,
+        0.5407033686391929
+      ],
+      "test_catalog_match_lower_bound": 0.9394409937888198,
+      "runtime_s": 7.830298500019126,
+      "runtime_s_per_mpix": 5.437707291679948,
+      "peak_rss_delta_mb": 24.296875,
+      "recall_v_le_18": 0.5238095238095238,
+      "n_v_le_18": 735,
+      "recall_v_le_20": 0.5407925407925408,
+      "n_v_le_20": 1716,
+      "recall_v_le_22": 0.5426745778183478,
+      "n_v_le_22": 2191,
+      "high_density_v20_recall": 0.2860696517412935,
+      "high_density_v20_n": 402,
+      "high_density_v20_ci95": [
+        0.24407956259757974,
+        0.33210976841235124
+      ],
+      "astrometric_rms_px": 0.05381463701456469,
+      "astrometric_rms_mas": 2.6907318507282345,
+      "photometric_rms_mag": 0.12442711551805093,
+      "measurement_test_matches": 1192,
+      "astrometric_rms_mas_ci95": [
+        2.567951203536025,
+        2.8125189413543725
+      ],
+      "photometric_rms_mag_ci95": [
+        0.1182852053645213,
+        0.13025850759223276
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6752",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 5628,
+      "test_references": 2291,
+      "test_recovered": 1747,
+      "test_completeness": 0.7625491051942384,
+      "test_completeness_ci95": [
+        0.7446939767880326,
+        0.7795252111506906
+      ],
+      "test_catalog_match_lower_bound": 0.9421272158498436,
+      "runtime_s": 14.12376079999376,
+      "runtime_s_per_mpix": 9.80816722221789,
+      "peak_rss_delta_mb": 137.33984375,
+      "recall_v_le_18": 0.8802721088435375,
+      "n_v_le_18": 735,
+      "recall_v_le_20": 0.8006993006993007,
+      "n_v_le_20": 1716,
+      "recall_v_le_22": 0.778183477863989,
+      "n_v_le_22": 2191,
+      "high_density_v20_recall": 0.5696517412935324,
+      "high_density_v20_n": 402,
+      "high_density_v20_ci95": [
+        0.5208161610606955,
+        0.6171687079128153
+      ],
+      "astrometric_rms_px": 0.021051675912660852,
+      "astrometric_rms_mas": 1.0525837956330426,
+      "photometric_rms_mag": 0.0390690609361422,
+      "measurement_test_matches": 1747,
+      "astrometric_rms_mas_ci95": [
+        1.0172340120211838,
+        1.0862807849511074
+      ],
+      "photometric_rms_mag_ci95": [
+        0.03736805183876816,
+        0.04080217145176653
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6752",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 7357,
+      "test_references": 2291,
+      "test_recovered": 2135,
+      "test_completeness": 0.9319074639895242,
+      "test_completeness_ci95": [
+        0.9208525045944373,
+        0.941516383959788
+      ],
+      "test_catalog_match_lower_bound": 0.9167324388318864,
+      "runtime_s": 40.9323824000021,
+      "runtime_s_per_mpix": 28.42526555555701,
+      "peak_rss_delta_mb": 52.3046875,
+      "recall_v_le_18": 0.9823129251700681,
+      "n_v_le_18": 735,
+      "recall_v_le_20": 0.9557109557109557,
+      "n_v_le_20": 1716,
+      "recall_v_le_22": 0.9493382017343679,
+      "n_v_le_22": 2191,
+      "high_density_v20_recall": 0.8756218905472637,
+      "high_density_v20_n": 402,
+      "high_density_v20_ci95": [
+        0.8397624582860632,
+        0.9043702279639418
+      ],
+      "astrometric_rms_px": 0.02696310910808829,
+      "astrometric_rms_mas": 1.3481554554044146,
+      "photometric_rms_mag": 0.04203405443239276,
+      "measurement_test_matches": 2135,
+      "astrometric_rms_mas_ci95": [
+        1.3090981226798346,
+        1.38609672563965
+      ],
+      "photometric_rms_mag_ci95": [
+        0.040497126714918265,
+        0.043511484587005184
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc6752",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 7348,
+      "test_references": 2291,
+      "test_recovered": 2139,
+      "test_completeness": 0.9336534264513313,
+      "test_completeness_ci95": [
+        0.9227184987624003,
+        0.9431364691796137
+      ],
+      "test_catalog_match_lower_bound": 0.9157811885084612,
+      "runtime_s": 55.5404264999961,
+      "runtime_s_per_mpix": 38.569740624997294,
+      "peak_rss_delta_mb": 52.0859375,
+      "recall_v_le_18": 0.9836734693877551,
+      "n_v_le_18": 735,
+      "recall_v_le_20": 0.9603729603729604,
+      "n_v_le_20": 1716,
+      "recall_v_le_22": 0.9511638521223186,
+      "n_v_le_22": 2191,
+      "high_density_v20_recall": 0.8830845771144279,
+      "high_density_v20_n": 402,
+      "high_density_v20_ci95": [
+        0.8479869223252732,
+        0.9109298570290367
+      ],
+      "astrometric_rms_px": 0.025319771403023716,
+      "astrometric_rms_mas": 1.265988570151186,
+      "photometric_rms_mag": 0.0369863237119677,
+      "measurement_test_matches": 2140,
+      "astrometric_rms_mas_ci95": [
+        1.2308456048550522,
+        1.3006295773258776
+      ],
+      "photometric_rms_mag_ci95": [
+        0.03548797606325688,
+        0.03832741923417673
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc1851",
+      "method": "dao",
+      "label": "DAOStarFinder",
+      "candidates": 3130,
+      "test_references": 5366,
+      "test_recovered": 931,
+      "test_completeness": 0.17349981364144615,
+      "test_completeness_ci95": [
+        0.16360217216852346,
+        0.18386461344392369
+      ],
+      "test_catalog_match_lower_bound": 0.9664750957854407,
+      "runtime_s": 0.14186319999862462,
+      "runtime_s_per_mpix": 0.09851611111015598,
+      "peak_rss_delta_mb": 39.88671875,
+      "recall_v_le_18": 0.7189542483660131,
+      "n_v_le_18": 306,
+      "recall_v_le_20": 0.4248429192846786,
+      "n_v_le_20": 2069,
+      "recall_v_le_22": 0.2085573476702509,
+      "n_v_le_22": 4464,
+      "high_density_v20_recall": 0.34502923976608185,
+      "high_density_v20_n": 1368,
+      "high_density_v20_ci95": [
+        0.32030338352659576,
+        0.3706230324677872
+      ],
+      "astrometric_rms_px": 0.03355553294850938,
+      "astrometric_rms_mas": 1.677776647425469,
+      "photometric_rms_mag": 0.32022765165427536,
+      "measurement_test_matches": 932,
+      "astrometric_rms_mas_ci95": [
+        1.5985997440054882,
+        1.7635376898341646
+      ],
+      "photometric_rms_mag_ci95": [
+        0.3023708978903299,
+        0.3363163561957606
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc1851",
+      "method": "sep",
+      "label": "SEP/SExtractor-style",
+      "candidates": 7892,
+      "test_references": 5366,
+      "test_recovered": 2449,
+      "test_completeness": 0.4563920983973164,
+      "test_completeness_ci95": [
+        0.44310071173223864,
+        0.469745879496821
+      ],
+      "test_catalog_match_lower_bound": 0.9451242120875046,
+      "runtime_s": 9.623590600007446,
+      "runtime_s_per_mpix": 6.683049027782949,
+      "peak_rss_delta_mb": 10.62109375,
+      "recall_v_le_18": 0.477124183006536,
+      "n_v_le_18": 306,
+      "recall_v_le_20": 0.5592073465442242,
+      "n_v_le_20": 2069,
+      "recall_v_le_22": 0.5477150537634409,
+      "n_v_le_22": 4464,
+      "high_density_v20_recall": 0.5182748538011696,
+      "high_density_v20_n": 1368,
+      "high_density_v20_ci95": [
+        0.49178226722360574,
+        0.5446650893808301
+      ],
+      "astrometric_rms_px": 0.11970235796739408,
+      "astrometric_rms_mas": 5.985117898369704,
+      "photometric_rms_mag": 0.2650444202882552,
+      "measurement_test_matches": 2451,
+      "astrometric_rms_mas_ci95": [
+        5.778376340725964,
+        6.186037040045479
+      ],
+      "photometric_rms_mag_ci95": [
+        0.2565476518207175,
+        0.27243968312742134
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc1851",
+      "method": "photutils_psf",
+      "label": "Photutils PSFPhotometry",
+      "candidates": 3088,
+      "test_references": 5366,
+      "test_recovered": 915,
+      "test_completeness": 0.1705180767797242,
+      "test_completeness_ci95": [
+        0.16069181467928162,
+        0.18081576349583628
+      ],
+      "test_catalog_match_lower_bound": 0.9642166344294004,
+      "runtime_s": 10.108278200001223,
+      "runtime_s_per_mpix": 7.019637638889738,
+      "peak_rss_delta_mb": 46.265625,
+      "recall_v_le_18": 0.7189542483660131,
+      "n_v_le_18": 306,
+      "recall_v_le_20": 0.4248429192846786,
+      "n_v_le_20": 2069,
+      "recall_v_le_22": 0.2049731182795699,
+      "n_v_le_22": 4464,
+      "high_density_v20_recall": 0.34502923976608185,
+      "high_density_v20_n": 1368,
+      "high_density_v20_ci95": [
+        0.32030338352659576,
+        0.3706230324677872
+      ],
+      "astrometric_rms_px": 0.07546480109406718,
+      "astrometric_rms_mas": 3.773240054703359,
+      "photometric_rms_mag": 0.28267865420233945,
+      "measurement_test_matches": 916,
+      "astrometric_rms_mas_ci95": [
+        3.555229029853783,
+        4.001083314434152
+      ],
+      "photometric_rms_mag_ci95": [
+        0.26734420474166676,
+        0.29711806954134146
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc1851",
+      "method": "wpdc_epsf_deblend",
+      "label": "WPDC ePSF + residual deblend",
+      "candidates": 5564,
+      "test_references": 5366,
+      "test_recovered": 1572,
+      "test_completeness": 0.2929556466641819,
+      "test_completeness_ci95": [
+        0.280929810234223,
+        0.3052777233362272
+      ],
+      "test_catalog_match_lower_bound": 0.9532006455083378,
+      "runtime_s": 29.734028600010788,
+      "runtime_s_per_mpix": 20.648630972229714,
+      "peak_rss_delta_mb": 54.8515625,
+      "recall_v_le_18": 0.9411764705882353,
+      "n_v_le_18": 306,
+      "recall_v_le_20": 0.7283711938134364,
+      "n_v_le_20": 2069,
+      "recall_v_le_22": 0.3521505376344086,
+      "n_v_le_22": 4464,
+      "high_density_v20_recall": 0.6885964912280702,
+      "high_density_v20_n": 1368,
+      "high_density_v20_ci95": [
+        0.6635580343665489,
+        0.7125786857912303
+      ],
+      "astrometric_rms_px": 0.08501293563673709,
+      "astrometric_rms_mas": 4.2506467818368545,
+      "photometric_rms_mag": 0.0803278900161775,
+      "measurement_test_matches": 1574,
+      "astrometric_rms_mas_ci95": [
+        4.066765426461676,
+        4.429156106680603
+      ],
+      "photometric_rms_mag_ci95": [
+        0.07684462500485872,
+        0.08370384065969412
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    },
+    {
+      "cluster": "ngc1851",
+      "method": "wpdc_spatial_epsf_joint",
+      "label": "WPDC spatial ePSF + joint fit",
+      "candidates": 6791,
+      "test_references": 5366,
+      "test_recovered": 1864,
+      "test_completeness": 0.34737234439060755,
+      "test_completeness_ci95": [
+        0.33474586889327035,
+        0.3602172004084387
+      ],
+      "test_catalog_match_lower_bound": 0.9305435720448663,
+      "runtime_s": 55.603648799995426,
+      "runtime_s_per_mpix": 38.61364499999682,
+      "peak_rss_delta_mb": 50.97265625,
+      "recall_v_le_18": 0.9705882352941176,
+      "n_v_le_18": 306,
+      "recall_v_le_20": 0.8801353310778154,
+      "n_v_le_20": 2069,
+      "recall_v_le_22": 0.4175627240143369,
+      "n_v_le_22": 4464,
+      "high_density_v20_recall": 0.8633040935672515,
+      "high_density_v20_n": 1368,
+      "high_density_v20_ci95": [
+        0.8440795400173635,
+        0.8804939092788235
+      ],
+      "astrometric_rms_px": 0.04294226493671532,
+      "astrometric_rms_mas": 2.1471132468357657,
+      "photometric_rms_mag": 0.08237115993256071,
+      "measurement_test_matches": 1865,
+      "astrometric_rms_mas_ci95": [
+        2.0649263537344384,
+        2.230040236388853
+      ],
+      "photometric_rms_mag_ci95": [
+        0.0789729411662588,
+        0.08560147837230099
+      ],
+      "measurement_ci_method": "conditional residual bootstrap, 1000 resamples"
+    }
+  ],
+  "artificial_batches": [],
+  "artificial_aggregate": []
+}

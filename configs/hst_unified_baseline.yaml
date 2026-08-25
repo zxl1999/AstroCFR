@@ -1,0 +1,12 @@
+crop: central_1200x1200
+clusters: [ngc6397, ngc6752, ngc1851]
+association_radius_px: 2.0
+spatial_partitions: [0, 1, 2]
+wpdc_rf_training_partition: 0
+wpdc_rf_threshold_partition: 1
+test_partition: 2
+artificial_star_magnitudes: [20, 22]
+artificial_star_density: [low_0_1_neighbours, high_ge_3_neighbours]
+artificial_stars_per_stratum: 200
+artificial_star_seed: 20260808
+confidence_interval: Wilson_95_percent

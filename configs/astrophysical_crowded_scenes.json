@@ -1,0 +1,43 @@
+{
+  "protocol_version": "1.0",
+  "image_size_px": 384,
+  "pixel_scale_mas": 50.0,
+  "match_radius_px": 2.0,
+  "photometric_zero_point": 29.5,
+  "read_noise_electrons": 4.5,
+  "scenes": {
+    "galactic_center_like": {
+      "display_name": "Galactic-center-like nuclear field",
+      "seed": 2026081301,
+      "stars_at_384px": 1050,
+      "population": "central_cusp_plus_uniform",
+      "magnitude_range": [20.5, 28.0],
+      "background_mode": "bright_nuclear_cusp",
+      "extinction_mode": "patchy_differential",
+      "psf_fwhm_px": [1.8, 2.8],
+      "description": "A high-density central cusp with patchy extinction, a steep unresolved background, and a spatially varying elliptical Moffat PSF."
+    },
+    "thin_disk_like": {
+      "display_name": "Milky-Way-thin-disk-like field",
+      "seed": 2026081302,
+      "stars_at_384px": 700,
+      "population": "warped_thin_disk",
+      "magnitude_range": [20.0, 28.5],
+      "background_mode": "structured_disk",
+      "extinction_mode": "midplane_dust_lane",
+      "psf_fwhm_px": [1.9, 2.6],
+      "description": "A vertically concentrated, weakly warped stellar disk with a dust lane, structured background, and position-dependent PSF."
+    },
+    "dwarf_galaxy_like": {
+      "display_name": "Dwarf-galaxy-like resolved field",
+      "seed": 2026081303,
+      "stars_at_384px": 520,
+      "population": "elliptical_exponential_plus_field",
+      "magnitude_range": [20.0, 29.0],
+      "background_mode": "low_surface_brightness_exponential",
+      "extinction_mode": "mild_patchy",
+      "psf_fwhm_px": [2.0, 2.5],
+      "description": "A resolved, elliptical low-surface-brightness system with a central density gradient and a modest foreground component."
+    }
+  }
+}

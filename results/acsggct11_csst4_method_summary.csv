@@ -1,0 +1,29 @@
+evidence_tier,method_id,method,method_group,completed_fields,median_recovery_percent,median_high_density_v20_recall_percent,median_astrometric_rms_mas,median_photometric_rms_mag,median_runtime_s_per_mpix
+CSST-like full-frame registered simulation,dao,DAOStarFinder,single-image baseline,0,,,,,
+CSST-like full-frame registered simulation,sep,SEP/SExtractor-style,single-image baseline,4,88.3500,,24.2500,0.3990,
+CSST-like full-frame registered simulation,photutils_psf,Photutils PSFPhotometry,single-image baseline,0,,,,,
+CSST-like full-frame registered simulation,astrocfr_rf,AstroCFR RF candidate branch,v45 branch,0,,,,,
+CSST-like full-frame registered simulation,astrocfr_epsf_deblend,AstroCFR ePSF + residual deblend,v45 branch,4,94.7500,,8.9500,0.0640,
+CSST-like full-frame registered simulation,astrocfr_spatial_epsf_joint,AstroCFR spatial-ePSF joint,v45 branch,0,,,,,
+CSST-like full-frame registered simulation,astrocfr_photutils_hybrid,AstroCFR+Photutils hybrid,v45 ablation,0,,,,,
+CSST-like full-frame registered simulation,global_epsf_joint,Global empirical ePSF + neighbour joint,literature mapping: effective-PSF ablation (Libralato et al. 2024),0,,,,,
+CSST-like full-frame registered simulation,three_gaussian_dpsf_joint,Three-Gaussian dPSF + neighbour joint,literature mapping: discrete-PSF approximation (Nie et al. 2025),0,,,,,
+CSST-like full-frame registered simulation,spatial_epsf_joint,Spatial empirical ePSF + neighbour joint,literature-mapped spatial ePSF control,0,,,,,
+CSST-like full-frame registered simulation,dolphot,DOLPHOT/ALLFRAME-class multi-exposure,external pipeline,0,,,,,
+CSST-like full-frame registered simulation,crowdsource,crowdsource joint multiband,external pipeline,0,,,,,
+CSST-like full-frame registered simulation,euclid_vvv,Euclid/VVV full workflow,external pipeline,0,,,,,
+CSST-like full-frame registered simulation,csst_psfnet,CSST-PSFNet,external PSF model,0,,,,,
+HST/ACS single-F606W controlled,dao,DAOStarFinder,single-image baseline,11,22.1380,45.8590,2.4337,0.2000,0.1090
+HST/ACS single-F606W controlled,sep,SEP/SExtractor-style,single-image baseline,11,44.3550,51.8270,6.3103,0.2926,6.3730
+HST/ACS single-F606W controlled,photutils_psf,Photutils PSFPhotometry,single-image baseline,11,22.1750,45.8590,3.8964,0.1790,7.7760
+HST/ACS single-F606W controlled,astrocfr_rf,AstroCFR RF candidate branch,v45 branch,0,,,,,
+HST/ACS single-F606W controlled,astrocfr_epsf_deblend,AstroCFR ePSF + residual deblend,v45 branch,11,35.6840,66.6670,4.2506,0.0833,24.8500
+HST/ACS single-F606W controlled,astrocfr_spatial_epsf_joint,AstroCFR spatial-ePSF joint,v45 branch,11,52.0250,86.2630,2.4417,0.0875,45.6500
+HST/ACS single-F606W controlled,astrocfr_photutils_hybrid,AstroCFR+Photutils hybrid,v45 ablation,3,88.2150,66.6670,1.3753,0.0560,13.5420
+HST/ACS single-F606W controlled,global_epsf_joint,Global empirical ePSF + neighbour joint,literature mapping: effective-PSF ablation (Libralato et al. 2024),11,82.7010,,3.8216,0.1236,
+HST/ACS single-F606W controlled,three_gaussian_dpsf_joint,Three-Gaussian dPSF + neighbour joint,literature mapping: discrete-PSF approximation (Nie et al. 2025),11,82.6250,,3.7778,0.1237,
+HST/ACS single-F606W controlled,spatial_epsf_joint,Spatial empirical ePSF + neighbour joint,literature-mapped spatial ePSF control,11,83.0050,,2.8974,0.1180,
+HST/ACS single-F606W controlled,dolphot,DOLPHOT/ALLFRAME-class multi-exposure,external pipeline,0,,,,,
+HST/ACS single-F606W controlled,crowdsource,crowdsource joint multiband,external pipeline,0,,,,,
+HST/ACS single-F606W controlled,euclid_vvv,Euclid/VVV full workflow,external pipeline,0,,,,,
+HST/ACS single-F606W controlled,csst_psfnet,CSST-PSFNet,external PSF model,0,,,,,

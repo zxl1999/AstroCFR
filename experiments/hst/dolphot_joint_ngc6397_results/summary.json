@@ -1,0 +1,35 @@
+{
+  "status": "diagnostic_only",
+  "cluster": "NGC 6397",
+  "method": "DOLPHOT 2.1 ACS five-FLC joint run on Windows",
+  "dolphot_rows": 25187,
+  "retained_in_crop": 684,
+  "quality_test_references": 631,
+  "test_recall_quality": 0.10301109350237718,
+  "test_matched_measurements": 65,
+  "astrometric_1d_rms_mas": 4.430305686506098,
+  "astrometric_inliers": 57,
+  "photometric_rms_mag_after_train_only_zp": 0.08993116174361608,
+  "photometric_inliers": 58,
+  "train_only_vega_zero_point_offset_mag": -0.07200000000000095,
+  "alignment_matches_preclip": 56,
+  "alignment_inliers": 55,
+  "per_extension_wcs_translation_px": {
+    "1": [
+      11.449162708362792,
+      2.6520135879959525
+    ],
+    "2": [
+      11.684582178070741,
+      2.3642049159466296
+    ]
+  },
+  "matching_radius_px": 2.0,
+  "crop": [
+    2400,
+    2400,
+    1200,
+    1200
+  ],
+  "critical_warning": "DOLPHOT joint.warnings reports 0.77--1.18 pixel inter-exposure alignment scatter for three 15-s frames; do not interpret this pilot as a high-precision multi-epoch baseline or include it in manuscript results."
+}

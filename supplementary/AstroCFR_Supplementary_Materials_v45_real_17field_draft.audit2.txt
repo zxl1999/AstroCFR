@@ -1,0 +1,319 @@
+P0: Supplementary Materials for AstroCFR
+P1: Classifier selection and architecture ablations
+P2: This supplement contains the detailed classifier analyses moved from the focused main manuscript. Candidate generation, data partitions, association rules, and threshold protocols are unchanged.
+P3: S1 Nine-method classifier comparison
+P4: For isolated classifier benchmarking, complete pre-classification candidate tables are exported from each chip. Each table includes features, cutout references, coordinates, and labels derived from the reference match. Ten repeated stratified trials split each chip into train, validation, and test subsets. Training subsets are pooled across chips after per-chip z-score normalization, with negative examples undersampled to a 3:1 negative-to-positive ratio. Thresholds are calibrated independently on each chip's validation subset and evaluated on the corresponding test subset.
+P5: The same exported candidate pools support all classical and deep classifiers. This isolates architecture effects from candidate-generation differences. Deep networks are evaluated over fewer repeated trials because of computational cost, but they use the same threshold protocol and target operating point.
+P6: Feature normalization is performed per chip before pooling because absolute flux, peak significance, and local background variance are not comparable across all chips. This step uses no labels and therefore does not leak test information. It simply maps each chip's candidate distribution into a common scale so that classifiers can learn morphology and concentration patterns rather than chip-specific numerical ranges. Preliminary experiments showed that this normalization strongly reduced cross-validation variance.
+P7: After applying the same per-chip threshold calibration protocol, all nine classifiers achieve similar global recall between 94.59% and 95.71%. Precision varies much more strongly. RandomForest and XGBoost provide the highest global precision, while KNN and SVM are less robust under the heterogeneous chip distribution. The rotation-invariant GoogLeNet-style classifier, although effective for star-galaxy classification in prior CSST preparation work, is not optimal for the present point-source artifact-rejection task.
+P8: Table S1. Nine-method classifier comparison under per-chip threshold calibration.
+P9: Fig. S1. Recall and precision for nine classification methods.
+P11: S2 Controlled classifier-architecture ablation
+P12: To test whether a newer attention-based classifier is necessary, we performed a controlled simulation-domain ablation. Candidate generation, the association rule, the four CSST-like chips, and the train/validation/test partition were fixed. Only the candidate-quality classifier was changed: the established 17-feature RandomForest, the original AstroCFR StarBogusNet, and a lightweight patch Transformer using the same 25 × 25 cutout and 17 handcrafted features. The Transformer uses 25 non-overlapping 5 × 5 patches, 64-dimensional tokens, two four-head encoder layers, and a small feature-fusion head.
+P13: The results are reported in Table S2. The Transformer improves recall and F1 over the original CNN in this split, but the RF branch remains the strongest operating point under the pre-registered threshold rule. The attention model also requires approximately twice the training time of the CNN and is not a replacement for the AstroCFR system. This negative result is useful: it shows that the paper's contribution is the deployable multi-stage pipeline and its explicit operating points, rather than an unsupported claim that a Transformer is universally superior.
+P14: Table S2. Controlled simulation-domain candidate-classifier ablation. Values use the untouched 20% test partition; thresholds are selected on the validation partition to retain at least 90% validation recall. GPU figures apply to the CNN and Transformer classifier stages only.
+P15: CSST-PSFNet and SwinBayesNet are not added to Table S2 because their tasks, required labels, available checkpoints, and licensing conditions do not define a common candidate-classification experiment. The interface audit is archived separately in the repository.
+P16: S3 Image-only density-gate audit
+P17: The registered density-adaptive result in the main text uses artificial-star density strata. To assess whether those strata can be inferred from the image alone, we calibrated a shallow RandomForest on multi-scale candidate counts and local pixel texture in x < 400 pixels and evaluated x >= 800 pixels. No catalogue labels enter inference. The cross-field instability is why the main text does not call the router an automatic density classifier.
+P18: Table S3. Image-only density-gate audit on spatially held-out artificial-protocol positions. These are gate-classification diagnostics, not source-recovery or photometric metrics.
+P19: S4 Tile-level CPU parallel scaling
+P20: The ePSF plus residual-deblend branch was applied independently to four 600 x 600 tiles from the NGC 6752 central crop. Timings include worker start-up and per-worker image/PSF initialization. Candidate totals were identical across configurations. These values establish tile-level workstation scaling only.
+P21: Table S4. Tile-level CPU scaling and aggregate process RSS for AstroCFR ePSF-deblend.
+P22: S5 Parameter-sensitivity audit
+P23: Detector threshold and association radius are reported as post-hoc robustness audits, not method-selection parameters. The threshold scan uses the common image-only DAO-style proposal front end with the primary two-pixel evaluation rule. The radius scan holds every produced catalogue fixed before changing the evaluation association radius. Catalogue-match values remain lower bounds, not blind purity.
+P24: Table S5. Common proposal-threshold sensitivity on the NGC 6752 spatial test partition (fixed two-pixel association).
+P25: Table S6. Association-radius sensitivity with fixed NGC 6752 catalogues. Completeness is measured against the same held-out quality references.
+P26: S6 Archived simulation diagnostics
+P27: The following diagnostic panels were removed from the main text to maintain focus on controlled recovery, measurement, and cost results. They document calibration internals and remain available for audit; they are not additional efficacy claims.
+P29: Fig. S2. WCS astrometric diagnostics for the four CSST-like chips.
+P31: Fig. S3. K-fold cross-validation diagnostics for the ML magnitude refinement.
+P33: Fig. S4. Photometric calibration diagnostics for the four CSST-like chips.
+P35: Fig. S5. Final simulation-catalogue output diagnostics for the four chips.
+P36: S7 Archived diagnostics and superseded pilots
+P37: These items are retained for auditability but are not part of the primary evidential chain. Classifier diagnostics document implementation choices; pilot artificial-star results are superseded by the n=200 fixed-scene experiment in the main text.
+P38: Table S7. AstroCFR modules and their system role.
+P39: Table S8. Effect of threshold calibration on chip 12 RandomForest performance.
+P40: Table S9. RandomForest, focal-loss CNN, and hybrid stacking.
+P41: Table S10. Full-pipeline metrics with three point-source classifiers.
+P42: Table S11. Final AstroCFR catalog quality.
+P43: Table S12. Zero-shot transfer from CSST-like simulations to public real survey images. Gaia labels are evaluation-only; retained Gaia match rate is not a true precision estimate.
+P44: Table S13. Zero-shot versus few-shot target-domain adaptation. Recall is measured only on spatial partition 2, which is untouched during fitting and threshold calibration. Gaia match rate is a catalogue-coverage lower bound, not physical catalogue purity.
+P45: Table S14. Literature benchmark context. Only metrics with compatible units and evaluation meaning are compared; different filters and artificial-star experiments are not treated as a common leaderboard.
+P46: Table S15. Direct v7 versus ePSF/residual comparison on the same untouched spatial test partition. The last column is intentionally absent for ePSF proposals because no new purity classifier has been trained for this branch; treating a reference-catalogue association as a purity estimate would be circular.
+P47: Table S16. Artificial-star proposal recovery. For each cell, 60 stars are injected in three sparse batches into the real image and recovered within 2 pixels. Density is the number of official quality-selected sources within 10 pixels at the injected position; it is used only to stratify final reporting. The injected stars are not placed on catalogue positions and are separated by at least 12 pixels within each batch.
+P48: Table S17. NGC 6752 fixed-scene artificial-star proposal recovery. Each injected star is recovered when any candidate lies within 2 pixels. Low and high density are fixed scene strata defined by the number of reference neighbours within 10 pixels; this is not catalogue purity or a substitute for a completeness-calibrated production catalogue.
+P49: Table S18. Conditional measurement and repeatability intervals for the NGC 6752 controlled test. The spatial-ePSF/joint-fit branch has the lowest photometric RMS among the five measurement-capable branches in this table, but Photutils has the lowest position RMS and substantially lower runtime.
+P50: Table S19. Original AstroCFR StarBogusNet resource profile. The CPU and GPU rows use identical input geometry, sample count, seeds, epochs, and batch sizes. GPU: NVIDIA GeForce RTX 5060 Laptop GPU; PyTorch 2.10.0.dev+cu128; CUDA 12.8.
+P52: Fig. S6. Heterogeneous chip statistics used to motivate per-chip adaptation.
+P54: Fig. S7. Chip image distribution and pixel-value statistics for the four validation chips (English relabeling of source report Fig. 1).
+P56: Fig. S8. Three-level deblending recovery and blend-dominated false-negative structure.
+P58: Fig. S9. Effect of threshold calibration protocol on RandomForest performance for chip 12.
+P60: Fig. S10. Probability-level fusion of handcrafted and image-based classifiers.
+P62: Fig. S11. Average full-pipeline metrics for classifier integration.
+P64: Fig. S12. External real-data domains used for zero-shot evaluation. Cyan circles are Gaia DR3 G <= 20 references and yellow points are candidates retained by the frozen simulation-trained AstroCFR filter.
+P66: Fig. S13. ePSF/residual proposal maps and empirical PSFs for the two HST/ACS crowded-field crops.
+P68: Fig. S14. Fixed-scene artificial-star proposal recovery with Wilson 95% intervals. Every method receives the same injected scenes. The repeated DAO and Photutils curves reflect their shared DAOStarFinder proposal frontend, not an independent detector tie.
+P69: S8 Common-protocol stratification and blind-quality release
+P70: The six controlled branches were rerun on the same 1200 × 1200 HST/ACS test crops for NGC 6752 and NGC 1851. The released CSV/JSON separates three quantities: reference-conditioned held-out completeness by magnitude and local density; conditional position and magnitude RMS on matched held-out references; and the detection-SNR catalogue-match lower bound. The latter is not blind purity. Completeness and lower-bound intervals are Wilson 95% intervals. Wall times in the figure are single-run relative values; the five-repeat runtime intervals in the main text remain the canonical resource measurements.
+P71: For operational use, the spatial-ePSF catalogue exports only image/candidate-derived metadata: SNR, local residual improvement, neighbour count within 10 pixels, residual-deblend status, bright-core proximity, available classifier probability, local PSF-fit quality, and a uint16 quality bitmask. Bit 1 denotes SNR < 5; bit 2, local PSF residual > 3 RMS units; bit 4, at least three neighbours; bit 8, bright-core proximity; bit 16, residual deblending; and bit 32, a classifier probability in (0.2, 0.8). Local PSF-fit quality is a screening diagnostic, not an absolute goodness-of-fit in unresolved blends.
+P73: Fig. S15. NGC6752 common-protocol stratification. Recovery curves use held-out quality references; position and magnitude RMS are conditional on matched held-out references; the SNR panel is a catalogue-match lower bound rather than blind purity.
+P75: Fig. S16. NGC1851 common-protocol stratification. Recovery curves use held-out quality references; position and magnitude RMS are conditional on matched held-out references; the SNR panel is a catalogue-match lower bound rather than blind purity.
+P76: S9 Closed-book proposal pilot and multi-exposure readiness audit
+P77: For the closed-book CSST-like pilot, the test-chip candidate ECSV was written before opening that chip's supplied top-1000 catalogue. Candidate generation used an image-only proposal branch; no injected position was provided to detection or recovery. Processing was restricted to a fixed central 3000 x 3000-pixel crop to control memory. These controls remove direct test-truth leakage from proposal generation, but the top-1000 catalogue is not known to be exhaustive, so catalogue-match fraction is not blind purity.
+P78: Aggregated over the available chips, recovery is 102/160 at peak SNR 10 and 143/160 at peak SNR 30 in low-density positions; the corresponding high-density counts are 22/120 and 91/120. The different denominators arise because chip 12 did not contain valid high-density injection locations in the fixed crop. The pilot therefore establishes the expected density- and SNR-dependent proposal failure, but its scale and image-only frontend do not support a full AstroCFR efficacy, purity, or survey-throughput claim.
+P79: Table S20. Closed-book image-only proposal recovery. Wilson 95% intervals quantify binomial recovery only; injected positions were withheld from processing.
+P80: A stricter leave-one-chip-out RF screen was also attempted on the cropped data, but retention was unstable and collapsed to zero on some withheld-chip settings. It is recorded as a negative control in the machine-readable audit and is not used as evidence of cross-chip generalisation.
+P81: For the multi-exposure readiness audit, four homogeneous deep ACS/WFC F606W FLC exposures of NGC 6752 were selected. WCS-derived detector-shift initialisation recovered thousands of alignment candidates, but the best tested transformation retained 0.817-pixel inter-exposure scatter, which failed the predeclared sub-pixel gate. Processing was stopped and no NGC 1851 comparison was launched under the unresolved condition. These values diagnose dataset/registration readiness only; they are not DOLPHOT photometric or astrometric performance measurements.
+P82: Accordingly, no failed DOLPHOT output is included in the comparative tables. A valid experiment must first pass registration and PSF-star acceptance, then run identical FLC lists, spatial test regions, and artificial-star scenes for the physical backend with and without AstroCFR candidate/group priors.
+P83: S10 Independent Anderson-PSF injection validation
+P84: The earlier NGC 6752 artificial-star experiment is a controlled, method-identical scene test, but its artificial sources are generated from an image-derived empirical PSF belonging to the same modelling family as AstroCFR's recovery ePSF. To test whether this model match accounts for the recovery gain, we used the official Anderson ACS/WFC F475W standard PSF file (9 x 10 detector grid, 101 x 101 samples per PSF, four-times oversampled; 3,677,760 bytes; SHA-256 9B3A98844020581FFDF1EEEBB5D4488F03011BC4563C578D19042A76A81B5C82). The injector does not use AstroCFR's recovered PSF.
+P85: For each PHAT DRZ output-pixel centre, celestial WCS maps the pixel and requested star location back to each of three registered F475W FLC exposures (jbex18u6q, jbex18u9q, and jbex18ucq). The corresponding spatial Anderson PSF is evaluated in the appropriate ACS chip coordinates; the three exposure contributions are averaged, convolved with a fixed 0.55-pixel Gaussian output kernel chosen before the final run to match the 2.2-pixel DRZ core, and normalized in a 25 x 25 DRZ stamp. A registered geometry audit required unit flux, no negative/non-finite values, and less than 0.20-pixel radial centroid offset. All four extension-density test positions passed; the maximum offset was 0.150 pixel. This calculation represents local geometry and dithering but not the full AstroDrizzle kernel or correlated-noise process.
+P86: The deterministic input contains 25 positions per logical extension x density x magnitude stratum (200 attempts). Every position is injected and processed separately. Within an injection model, the paired denominator is the intersection of positions for which DAO, SEP, Photutils, and AstroCFR all have no pre-existing detection within 2 pixels; 174 positions meet this criterion. Recovery is a new detection within 2 pixels. Individual intervals are Wilson 95% intervals. Recovery-difference intervals are paired 20,000-replicate bootstraps with seed 20260812, and p values are exact two-sided McNemar tests.
+P87: Table S21. Strict single-star recovery under independent official Anderson F475W PSF injection. RMS is the radial distance to the nearest recovered detection, not a calibrated multi-exposure astrometric residual. Times are medians per local baseline-plus-injected trial.
+P88: For F475W=26.5, AstroCFR exceeds DAO/Photutils by 26.8 percentage points in the low-density stratum (paired-bootstrap 95% CI 14.6-41.5; 11 AstroCFR-only recoveries, 0 baseline-only; exact McNemar p=0.00098) and by 26.2 points in the high-density stratum (14.3-40.5; 11 versus 0; p=0.0010). Relative to the empirical-PSF injection on the same 174 positions, AstroCFR recovery changes by +4.9 points at low density and 0.0 points at high density; neither injection-model difference is significant by exact McNemar testing (p=0.50 and 1.00).
+P90: Fig. S17. Independent Anderson-PSF validation. (a) Strict paired recovery with Wilson 95% intervals. (b) AstroCFR's F475W=26.5 recovery change when the injector is changed from the image-derived empirical PSF to the official Anderson library; error bars are paired-bootstrap 95% intervals.
+P91: Interpretation boundary. This experiment removes exact reuse of AstroCFR's image-derived ePSF as the artificial-star generator, but it remains a single-stack candidate-recovery experiment. It does not establish blind catalogue purity, a pixel-identical comparison with DOLPHOT native FakeStars, a complete AstroDrizzle simulation, or superior final astrometry/photometry. DOLPHOT's three-FLC FakeStars measurements remain a separate physical-backend image domain and are not pooled into this leaderboard.
+P92: S11 Registered 17-unit evidence inventory and 4+10 real-field protocol
+P93: The complete manuscript evidence inventory has 17 independent test units: four CSST-like simulation chips, three v44 real HST/ACS globular-cluster fields, and ten registered real HST expansion fields. The `+10` sample cannot contain analytic or injected morphology scenes. An expansion field is admitted only when a real image, independently produced catalogue, nominal 1200 x 1200 crop, spatially held-out comparison, all five method branches, runtime/RSS measurements, and reporting-boundary checks are present. The matching framework is common, but the real-image product (DRZ, reference image, or FLC SCI crop), filter, pixel scale, and catalogue provenance are field-specific. Finite catalogues support catalogue recovery and conditional astrometric/photometric agreement but not blind false-discovery rates.
+P94: Table S22. Complete 17-unit evidence inventory. ‘Five-method status’ refers only to the common DAO/SEP/Photutils/AstroCFR-ePSF/AstroCFR+Photutils comparison; the CSST tier preserves the original registered AstroCFR result and is not retrospectively treated as a matched five-method benchmark.
+P95: Table S23. Registered 4+10 observational fields and completion gates.
+P96: Table S24. All admitted real-expansion comparisons. Recovery is measured against the held-out portion of each finite external catalogue. Position and magnitude RMS values are conditional on matched sources after calibration and robust clipping. The two Tarantula rows are retained despite low recovery and large conditional residuals; this table is not restricted to favourable cases.
+P97: Table S25. GR8 all-method recovery-only run. Only 36 held-out references fall in the selected F475W FLC crop; position and magnitude RMS are therefore intentionally not reported and this field is outside the main table.
+P98: Method-definition boundary. ‘AstroCFR+Photutils hybrid’ means AstroCFR ePSF/residual-deblend proposals followed by Photutils Gaussian-PRF PSFPhotometry. It is distinct from the v44 ‘spatial-ePSF + joint fit’ branch, which performs an AstroCFR-internal spatial empirical-PSF joint fit. The two are reported as distinct operating points and are never pooled or ranked as the same method.
+P99: Archive provenance. PHAT images/catalogues follow Dalcanton et al. (2012, ApJS, 200, 18); PHATTER products follow Williams et al. (2021, ApJS, 253, 8); the Tarantula/HTTP catalogue follows Sabbi et al. (2016, ApJS, 222, 11); and ANGST/GST products follow Dalcanton et al. (2009, ApJS, 183, 67) with DOLPHOT processing (Dolphin 2000, PASP, 112, 1383). These catalogues are external matching references only and never enter method fitting.
+P100: Interim boundary: 6 of 10 registered real fields have all-method recovery runs, while 5 pass the current manuscript-admission metrics. This v45 file is a protocol/results draft and is not submission-ready as a completed 4+10 study. Pending fields remain visible so that missing data cannot be silently replaced by simulations.
+--- T0 10x5 ---
+Method | Global recall (%) | Global precision (%) | Chip 12 recall (%) | Chip 12 precision (%)
+RandomForest | 94.89 +/- 1.40 | 89.25 +/- 2.32 | 95.01 +/- 2.38 | 82.10 +/- 4.84
+XGBoost | 95.12 +/- 1.17 | 86.91 +/- 2.61 | 95.15 +/- 2.85 | 80.61 +/- 6.01
+Gradient Boosting | 95.52 +/- 1.27 | 84.14 +/- 3.54 | 94.40 +/- 2.11 | 78.34 +/- 6.12
+CNN (native) | 94.59 +/- 1.79 | 83.91 +/- 3.58 | 94.39 +/- 2.65 | 77.07 +/- 3.15
+HR-CelestialNet | 95.71 +/- 1.66 | 78.70 +/- 4.44 | 94.25 +/- 1.19 | 72.66 +/- 9.00
+SVM (RBF) | 95.33 +/- 1.17 | 57.07 +/- 3.22 | 94.67 +/- 2.31 | 71.87 +/- 6.88
+Rotation-inv. GoogLeNet | 95.64 +/- 0.88 | 72.40 +/- 5.62 | 93.99 +/- 2.36 | 59.46 +/- 8.33
+Logistic Regression | 95.05 +/- 1.29 | 76.76 +/- 3.11 | 95.35 +/- 1.98 | 67.04 +/- 2.43
+KNN | 94.84 +/- 1.32 | 37.85 +/- 3.84 | 94.26 +/- 2.00 | 34.43 +/- 5.34
+--- T1 4x9 ---
+Model | Params | Recall | Precision | F1 | AUROC | AUPRC | Train/s | Inference ms/candidate
+RandomForest | -- | 0.9585 | 0.9943 | 0.9761 | 0.9994 | 0.9986 | 0.68 | 0.0370
+Original AstroCFR CNN | 28,081 | 0.9170 | 0.9881 | 0.9512 | 0.9978 | 0.9921 | 16.48 | 0.0062
+Patch Transformer | 74,193 | 0.9336 | 0.9926 | 0.9622 | 0.9987 | 0.9958 | 31.61 | 0.0067
+--- T2 4x5 ---
+Field | n | High-density sensitivity | Specificity | Balanced accuracy
+NGC6397 | 200 | 0.070 | 1.000 | 0.535
+NGC6752 | 200 | 0.590 | 0.970 | 0.780
+NGC1851 | 200 | 0.750 | 0.660 | 0.705
+--- T3 4x6 ---
+Processes | Wall time (s) | Speed-up | Efficiency | Throughput (MPix/s) | Peak RSS (MB)
+1 | 64.61 | 1.00x | 1.000 | 0.0223 | 786
+2 | 31.69 | 2.04x | 1.020 | 0.0454 | 1530
+4 | 21.42 | 3.02x | 0.754 | 0.0672 | 3025
+--- T4 5x4 ---
+Threshold (sigma) | Test candidates | Completeness | Catalogue-match lower bound
+2.5 | 1961 | 0.771 | 0.937
+3.0 | 1919 | 0.762 | 0.942
+3.5 | 1887 | 0.755 | 0.944
+4.0 | 1860 | 0.750 | 0.946
+--- T5 7x6 ---
+Fixed catalogue | 1.0 px | 1.5 px | 2.0 px | 2.5 px | 3.0 px
+DAOStarFinder | 0.762 | 0.762 | 0.762 | 0.763 | 0.763
+SEP/SExtractor-style | 0.491 | 0.510 | 0.520 | 0.522 | 0.526
+Photutils PSFPhotometry | 0.762 | 0.762 | 0.763 | 0.763 | 0.763
+AstroCFR-RF (target-adapted) | 0.634 | 0.634 | 0.634 | 0.635 | 0.635
+AstroCFR ePSF-deblend | 0.926 | 0.929 | 0.932 | 0.932 | 0.932
+AstroCFR spatial-ePSF joint fit | 0.932 | 0.933 | 0.934 | 0.934 | 0.935
+--- T6 7x4 ---
+Module | Input representation | Main operation | System role
+Background model | raw image | robust tiled RMS/background interpolation | stabilizes candidate detection
+Candidate detection | residual image | multi-branch local maxima and morphology | maximizes early recall
+Deblending | blend groups/cutouts | paired PSF, joint PSF, RL deconvolution | recovers structural false negatives
+Classifier | features + cutouts | RF/CNN/fusion probability thresholding | removes artifacts and PSF-wing candidates
+Astrometry | matched catalog residuals | polynomial, LUT, GPR correction | reduces position systematics
+Photometry | aperture fluxes/residuals | zero point, spatial correction, ML refinement | reduces magnitude systematics
+--- T7 3x3 ---
+Metric | Global shared threshold | Per-chip independent threshold
+Recall (%) | 72.06 +/- 5.93 | 95.01 +/- 2.38
+Precision (%) | 97.13 +/- 2.43 | 81.11 +/- 4.84
+--- T8 4x5 ---
+Method | Global recall (%) | Global precision (%) | Chip 12 recall (%) | Chip 12 precision (%)
+RandomForest | 94.45 +/- 1.26 | 89.29 +/- 2.65 | 94.53 +/- 2.77 | 82.10 +/- 4.84
+Focal-loss CNN | 95.43 +/- 1.23 | 78.10 +/- 4.24 | 95.07 +/- 1.86 | 66.55 +/- 4.37
+Hybrid Stacking | 95.47 +/- 1.22 | 90.03 +/- 2.40 | 95.90 +/- 1.88 | 81.47 +/- 5.59
+--- T9 13x6 ---
+Method | Chip | Recall (%) | Pos. RMS (mas) | Mag. RMS | Score /100
+RandomForest | 12 | 96.9 | 19.91 | 0.0714 | 85
+RandomForest | 13 | 93.4 | 16.62 | 0.0844 | 78
+RandomForest | 17 | 96.3 | 11.54 | 0.0707 | 90
+RandomForest | 18 | 90.8 | 8.55 | 0.0681 | 84
+XGBoost | 12 | 97.0 | 21.09 | 0.0688 | 86
+XGBoost | 13 | 93.9 | 15.48 | 0.0636 | 80
+XGBoost | 17 | 96.2 | 9.88 | 0.0709 | 90
+XGBoost | 18 | 91.3 | 12.15 | 0.0727 | 81
+Hybrid Stacking | 12 | 96.8 | 16.70 | 0.0645 | 88
+Hybrid Stacking | 13 | 93.8 | 15.85 | 0.0771 | 79
+Hybrid Stacking | 17 | 96.2 | 10.43 | 0.0751 | 90
+Hybrid Stacking | 18 | 91.4 | 12.62 | 0.0703 | 82
+--- T10 5x7 ---
+Chip | TP | FN | Recall (%) | Precision (%) | Pos. RMS (mas) | Mag. RMS
+12 | 969 | 31 | 96.9 | 100.0 | 17.2 | 0.0596
+13 | 931 | 69 | 93.1 | 100.0 | 8.2 | 0.0575
+17 | 964 | 36 | 96.4 | 100.0 | 9.1 | 0.0802
+18 | 918 | 82 | 91.8 | 100.0 | 8.8 | 0.0684
+--- T11 3x8 ---
+External domain | Gaia refs | Candidates | Retained | Raw recall (%) | Frozen-filter recall (%) | Gaia match-rate lower bound (%) | Runtime (s)
+Pan-STARRS1 (i) | 107 | 40 | 4 | 25.2 | 2.8 | 75.0 | 0.33
+DESI Legacy Survey DR10 (r) | 14414 | 1492 | 0 | 5.2 | 0.0 | 0.0 | 0.51
+--- T12 5x10 ---
+Domain | Mode | FWHM /px | Candidates | Retained | Held-out refs | Raw recall /% | Retained recall /% | Gaia match-rate lower bound /% | Threshold
+PS1_M31_i | zero shot | 3.50 | 40 | 4 | 30 | 36.7 | 3.3 | 75.0 | 0.990
+PS1_M31_i | domain adapted | 4.55 | 171 | 76 | 30 | 50.0 | 43.3 | 59.2 | 0.180
+LS_DR10_M13_r | zero shot | 3.50 | 1492 | 0 | 4822 | 5.0 | 0.0 | 0.0 | 0.990
+LS_DR10_M13_r | domain adapted | 4.11 | 1866 | 1513 | 4822 | 7.8 | 7.1 | 65.4 | 0.482
+--- T13 10x4 ---
+Reference | Data | Published benchmark | Comparability
+Anderson et al. (2008) | Same ACSGGCT programme | Essentially 100% completeness above the sub-giant branch for almost all clusters; approximately 0.01 pixel (0.5 mas) relative astrometry after a six-parameter transform | Same survey and official reference catalogue; not an independent rerun
+Libralato et al. (2024) | Euclid ERO NGC 6397 | 0.7 mas bright-star VIS 1D precision; 3.2-5.3 mas external Gaia residuals | Same cluster, different instrument and epoch; astrometric context only
+Salaris et al. (2024) | NGC 6752 WFC3/IR | Artificial-star recovery within 1 pixel and 0.75 mag; NIR completeness curves and 50% limits | Latest cluster analysis, but filters and injected truth differ; no direct numerical rank
+Yan et al. (2026), Astro-RetinaNet | CSST-simulated NGC 2298 and HST M31 | At i=25, 82% crowded and 95% noncrowded recovery; M31 F814W=27 candidate count exceeds Photutils/SExtractor | Closest detector-level study, but images, limiting magnitudes, association rule, and outputs differ
+Lai et al. (2026) | CSST multi-color density simulations | 98.83% density-category accuracy; 0.0824 dex bright-star-count MAE | Density gate rather than source-recovery or measurement baseline
+Yan et al. (2026), WPDC-2P | 18 CSST detectors and BASS | 0.013-0.107 pixel simulated scatter; 5.494/9.981 mas BASS positional scatter | Astrometric geometric-distortion module only; acronym explicitly distinguished from AstroCFR
+Nie et al. (2025) | CSST simulated sparse and crowded fields | Sub-mas sparse-field centering; improved faint-star astrometry versus SExtractor/DOLPHOT | PSF/astrometry context; no common AstroCFR candidate-recovery protocol
+Shaw et al. (2025), DRUID | LoTSS and KiDS extended-source images | Persistent-homology detection and nested-source segmentation | Different source morphologies and no crowded stellar photometry benchmark
+Burke et al. (2019) | PhoSim simulated astronomical scenes | Mask R-CNN detection, classification, and deblending | Learning-based deblending context; different simulator and evaluation task
+--- T14 5x7 ---
+Cluster | Branch | All-quality recall /% | Recall V<=20 /% | Pos. RMS /mas | Mag. RMS | Catalogue match lower bound /%
+NGC6397 | target-adapted RF catalogue | 95.4 | 92.8 | 1.67 | 0.038 | 98.0
+NGC6397 | ePSF + residual proposals | 98.7 | 98.7 | 1.10 | 0.035 | --
+NGC6752 | target-adapted RF catalogue | 76.2 | 75.4 | 1.99 | 0.153 | 98.6
+NGC6752 | ePSF + residual proposals | 93.6 | 96.1 | 1.36 | 0.042 | --
+--- T15 7x5 ---
+Cluster | Injected V | Recovery: 0-1 neighbours /% | Recovery: 2 neighbours /% | Recovery: >=3 neighbours /%
+NGC6397 | 18 | 100.0 | 75.0 | 68.3
+NGC6397 | 20 | 88.3 | 55.0 | 41.7
+NGC6397 | 22 | 81.7 | 43.3 | 21.7
+NGC6752 | 18 | 88.3 | 86.7 | 70.0
+NGC6752 | 20 | 85.0 | 68.3 | 36.7
+NGC6752 | 22 | 73.3 | 35.0 | 15.0
+--- T16 21x5 ---
+Method | Injected V | Density | n | Proposal recovery (95% CI)
+DAOStarFinder | 20 | low | 40 | 62.5% (47.0–75.8%)
+SEP/SExtractor-style | 20 | low | 40 | 50.0% (35.2–64.8%)
+Photutils PSFPhotometry | 20 | low | 40 | 62.5% (47.0–75.8%)
+AstroCFR original (target-adapted RF) | 20 | low | 40 | 57.5% (42.2–71.5%)
+AstroCFR ePSF-deblend | 20 | low | 40 | 90.0% (76.9–96.0%)
+DAOStarFinder | 20 | high | 40 | 30.0% (18.1–45.4%)
+SEP/SExtractor-style | 20 | high | 40 | 20.0% (10.5–34.8%)
+Photutils PSFPhotometry | 20 | high | 40 | 30.0% (18.1–45.4%)
+AstroCFR original (target-adapted RF) | 20 | high | 40 | 25.0% (14.2–40.2%)
+AstroCFR ePSF-deblend | 20 | high | 40 | 57.5% (42.2–71.5%)
+DAOStarFinder | 22 | low | 40 | 55.0% (39.8–69.3%)
+SEP/SExtractor-style | 22 | low | 40 | 15.0% (7.1–29.1%)
+Photutils PSFPhotometry | 22 | low | 40 | 55.0% (39.8–69.3%)
+AstroCFR original (target-adapted RF) | 22 | low | 40 | 7.5% (2.6–19.9%)
+AstroCFR ePSF-deblend | 22 | low | 40 | 75.0% (59.8–85.8%)
+DAOStarFinder | 22 | high | 40 | 12.5% (5.5–26.1%)
+SEP/SExtractor-style | 22 | high | 40 | 10.0% (4.0–23.1%)
+Photutils PSFPhotometry | 22 | high | 40 | 12.5% (5.5–26.1%)
+AstroCFR original (target-adapted RF) | 22 | high | 40 | 7.5% (2.6–19.9%)
+AstroCFR ePSF-deblend | 22 | high | 40 | 27.5% (16.1–42.8%)
+--- T17 7x5 ---
+NGC6752 branch | Position RMS / mas (95% CI) | Magnitude RMS / mag (95% CI) | Runtime / s MPix⁻¹ (5 repeats) | RSS delta / MB
+DAOStarFinder | 2.134 [2.064–2.200] | 0.058 [0.055–0.060] | 0.11 [0.10–0.11] | 39.9 [39.8–40.3]
+SEP/SExtractor-style | 2.690 [2.566–2.819] | 0.127 [0.120–0.133] | 5.18 [5.05–5.26] | 5.5 [5.5–5.5]
+Photutils PSFPhotometry | 1.053 [1.017–1.086] | 0.039 [0.037–0.041] | 8.64 [8.47–8.85] | 133.2 [122.0–135.0]
+AstroCFR original (target-adapted RF) | 1.987 [1.922–2.052] | 0.153 [0.147–0.159] | 0.48 [0.47–0.54] | 39.3 [39.3–39.4]
+AstroCFR ePSF-deblend | 1.348 [1.309–1.386] | 0.042 [0.040–0.044] | 24.24 [23.90–26.74] | 50.8 [50.8–50.8]
+AstroCFR spatial-ePSF joint fit | 1.266 [1.231–1.301] | 0.037 [0.035–0.038] | 32.23 [32.04–33.26] | 50.8 [50.8–50.8]
+--- T18 3x8 ---
+Device | Training / s | Training / epoch s | Inference / ms per 1k | Process RSS / MB | GPU allocated / MB | GPU reserved / MB | Scope
+CPU | 8.738 | 0.291 | 45.285 | 147.7 | N/A | N/A | model-stage
+RTX 5060 GPU | 3.674 | 0.122 | 8.984 | 655.0 | 58.3 | 86.0 | model-stage
+--- T19 5x6 ---
+Density | Peak SNR | Injected | Recovered | Recovery | Wilson 95% CI
+Low | 10 | 160 | 102 | 0.638 | [0.561, 0.708]
+Low | 30 | 160 | 143 | 0.894 | [0.836, 0.933]
+High | 10 | 120 | 22 | 0.183 | [0.124, 0.262]
+High | 30 | 120 | 91 | 0.758 | [0.674, 0.826]
+--- T20 17x7 ---
+Density | F475W | Method | Recovered | Recovery / % [95% CI] | Nearest RMS / px | Time / s
+low | 24.5 | DAO | 48/48 | 100.0 [92.6, 100.0] | 0.080 | 0.019
+low | 24.5 | SEP | 48/48 | 100.0 [92.6, 100.0] | 0.205 | 0.007
+low | 24.5 | Photutils | 48/48 | 100.0 [92.6, 100.0] | 0.068 | 0.288
+low | 24.5 | AstroCFR ePSF | 48/48 | 100.0 [92.6, 100.0] | 0.080 | 0.317
+low | 26.5 | DAO | 28/41 | 68.3 [53.0, 80.4] | 0.459 | 0.019
+low | 26.5 | SEP | 23/41 | 56.1 [41.0, 70.1] | 0.844 | 0.007
+low | 26.5 | Photutils | 28/41 | 68.3 [53.0, 80.4] | 0.437 | 0.291
+low | 26.5 | AstroCFR ePSF | 39/41 | 95.1 [83.9, 98.7] | 0.407 | 0.327
+high | 24.5 | DAO | 39/43 | 90.7 [78.4, 96.3] | 0.085 | 0.019
+high | 24.5 | SEP | 43/43 | 100.0 [91.8, 100.0] | 0.483 | 0.007
+high | 24.5 | Photutils | 40/43 | 93.0 [81.4, 97.6] | 0.299 | 0.310
+high | 24.5 | AstroCFR ePSF | 43/43 | 100.0 [91.8, 100.0] | 0.147 | 0.331
+high | 26.5 | DAO | 23/42 | 54.8 [39.9, 68.8] | 0.270 | 0.019
+high | 26.5 | SEP | 25/42 | 59.5 [44.5, 73.0] | 0.876 | 0.007
+high | 26.5 | Photutils | 24/42 | 57.1 [42.2, 70.9] | 0.323 | 0.309
+high | 26.5 | AstroCFR ePSF | 35/42 | 83.3 [69.4, 91.7] | 0.341 | 0.335
+--- T21 18x4 ---
+Evidence tier | Unit | Scene | Five-method status
+CSST simulation | Chip 12 | CSST-like supplied-catalogue chip | registered AstroCFR result
+CSST simulation | Chip 13 | CSST-like supplied-catalogue chip | registered AstroCFR result
+CSST simulation | Chip 17 | CSST-like supplied-catalogue chip | registered AstroCFR result
+CSST simulation | Chip 18 | CSST-like supplied-catalogue chip | registered AstroCFR result
+v44 real HST | NGC 6397 | HST/ACS F606W globular cluster | complete
+v44 real HST | NGC 6752 | HST/ACS F606W globular cluster | complete
+v44 real HST | NGC 1851 | HST/ACS F606W globular cluster | complete
+4+10 real HST | m31_b21_f15 | M31 outer-disk crowded field | complete
+4+10 real HST | m31_b21_f10 | M31 outer-disk crowded field | pending real input/catalogue
+4+10 real HST | m31_b21_f18 | M31 outer-disk crowded field | pending real input/catalogue
+4+10 real HST | m33_b01_f01 | M33 central/inner-disk crowded field candidate | pending real input/catalogue
+4+10 real HST | m33_b03_f02 | M33 disk crowded field | pending real input/catalogue
+4+10 real HST | ngc2070_1 | LMC dense star-forming disk | complete
+4+10 real HST | ngc2070_2 | LMC dense star-forming disk | complete
+4+10 real HST | m81_deep | massive spiral-galaxy resolved stellar field | complete
+4+10 real HST | ngc2976_deep | dwarf-disk resolved stellar field | complete
+4+10 real HST | gr8 | dwarf-irregular resolved stellar field | complete
+--- T22 11x6 ---
+Slot | Field | Observed scene | FLCs | Catalogues | Status
+1 | m31_b21_f15 | M31 outer-disk crowded field | 5 | 1 | Admitted
+2 | m31_b21_f10 | M31 outer-disk crowded field | 0 | 0 | download real images and catalogue
+3 | m31_b21_f18 | M31 outer-disk crowded field | 0 | 0 | download real images and catalogue
+4 | m33_b01_f01 | M33 central/inner-disk crowded field candidate | 0 | 0 | download real images and catalogue
+5 | m33_b03_f02 | M33 disk crowded field | 0 | 0 | download real images and catalogue
+6 | ngc2070_1 | LMC dense star-forming disk | 5 | 1 | Admitted
+7 | ngc2070_2 | LMC dense star-forming disk | 5 | 1 | Admitted
+8 | m81_deep | massive spiral-galaxy resolved stellar field | 8 | 1 | Admitted
+9 | ngc2976_deep | dwarf-disk resolved stellar field | 8 | 1 | Admitted
+10 | gr8 | dwarf-irregular resolved stellar field | 8 | 1 | All methods; metric gate pending
+--- T23 26x6 ---
+Field | Method | Catalogue recovery | Pos. RMS / mas | Magnitude RMS | s/MPix
+M31 B21-F15 | DAOStarFinder | 66.85% | 5.62 | 0.178 | 0.11
+M31 B21-F15 | SEP/SExtractor-style | 51.54% | 9.99 | 0.279 | 1.09
+M31 B21-F15 | Photutils PSFPhotometry | 66.85% | 4.32 | 0.070 | 17.72
+M31 B21-F15 | AstroCFR ePSF + residual deblend | 75.25% | 4.44 | 0.097 | 60.39
+M31 B21-F15 | AstroCFR+Photutils hybrid | 73.09% | 4.53 | 0.075 | 83.05
+NGC 2070-1 | DAOStarFinder | 17.93% | 51.54 | 2.068 | 0.16
+NGC 2070-1 | SEP/SExtractor-style | 7.36% | 55.69 | 1.757 | 0.58
+NGC 2070-1 | Photutils PSFPhotometry | 17.70% | 51.79 | 2.057 | 33.82
+NGC 2070-1 | AstroCFR ePSF + residual deblend | 19.31% | 51.64 | 2.163 | 124.20
+NGC 2070-1 | AstroCFR+Photutils hybrid | 19.77% | 52.11 | 2.069 | 149.38
+NGC 2070-2 | DAOStarFinder | 16.07% | 46.95 | 1.861 | 0.15
+NGC 2070-2 | SEP/SExtractor-style | 6.39% | 45.83 | 1.374 | 0.67
+NGC 2070-2 | Photutils PSFPhotometry | 16.56% | 46.80 | 1.776 | 35.43
+NGC 2070-2 | AstroCFR ePSF + residual deblend | 17.21% | 47.90 | 1.855 | 121.19
+NGC 2070-2 | AstroCFR+Photutils hybrid | 17.38% | 48.27 | 1.691 | 161.39
+M81-DEEP | DAOStarFinder | 61.05% | 12.45 | 0.326 | 0.13
+M81-DEEP | SEP/SExtractor-style | 21.69% | 8.93 | 0.316 | 0.19
+M81-DEEP | Photutils PSFPhotometry | 52.55% | 7.91 | 0.165 | 16.14
+M81-DEEP | AstroCFR ePSF + residual deblend | 64.44% | 9.93 | 0.212 | 53.40
+M81-DEEP | AstroCFR+Photutils hybrid | 59.96% | 8.73 | 0.177 | 71.28
+NGC 2976 | DAOStarFinder | 74.65% | 10.72 | 0.242 | 0.13
+NGC 2976 | SEP/SExtractor-style | 29.32% | 10.16 | 0.346 | 0.24
+NGC 2976 | Photutils PSFPhotometry | 70.24% | 7.20 | 0.127 | 16.24
+NGC 2976 | AstroCFR ePSF + residual deblend | 82.22% | 8.75 | 0.189 | 57.06
+NGC 2976 | AstroCFR+Photutils hybrid | 78.18% | 7.51 | 0.138 | 75.80
+--- T24 6x6 ---
+Method | Held-out refs | Catalogue recovery | Pos. RMS | Magnitude RMS | s/MPix
+DAOStarFinder | 36 | 19.44% | not reported | not reported | 0.15
+SEP/SExtractor-style | 36 | 11.11% | not reported | not reported | 0.19
+Photutils PSFPhotometry | 36 | 22.22% | not reported | not reported | 30.96
+AstroCFR ePSF + residual deblend | 36 | 22.22% | not reported | not reported | 133.06
+AstroCFR+Photutils hybrid | 36 | 22.22% | not reported | not reported | 152.76

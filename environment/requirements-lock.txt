@@ -1,0 +1,11 @@
+numpy==2.5.1
+scipy==1.18.0
+astropy==7.2.0
+photutils==3.0.0
+sep==1.4.1
+scikit-learn==1.9.0
+matplotlib==3.9.2
+psutil==7.1.3
+python-docx==1.2.0
+# PyTorch is optional for the CPU benchmark; the development machine used:
+# torch==2.10.0.dev20250926+cu128

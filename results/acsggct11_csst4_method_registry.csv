@@ -1,0 +1,15 @@
+method_id,method,method_group,complete_or_registered_rows,unavailable_or_incompatible_rows,scope_or_availability
+dao,DAOStarFinder,single-image baseline,11,4,No directly aligned full-frame registered result is archived for this method.
+sep,SEP/SExtractor-style,single-image baseline,15,0,all matrix rows complete
+photutils_psf,Photutils PSFPhotometry,single-image baseline,11,4,No directly aligned full-frame registered result is archived for this method.
+astrocfr_rf,AstroCFR RF candidate branch,v45 branch,0,15,"Protocol-excluded, not a failed RF result: the released RF is trained on CSST simulated-truth labels with CSST-specific feature normalisation and thresholding. Direct HST transfer is unvalidated; retraining on the ACSGGCT evaluation catalogue would be a separate supervised target-adaptation experiment requiring a pre-registered cross-field or held-out-field design."
+astrocfr_epsf_deblend,AstroCFR ePSF + residual deblend,v45 branch,15,0,all matrix rows complete
+astrocfr_spatial_epsf_joint,AstroCFR spatial-ePSF joint,v45 branch,11,4,No directly aligned full-frame registered result is archived for this method.
+astrocfr_photutils_hybrid,AstroCFR+Photutils hybrid,v45 ablation,3,12,No full 11-field hybrid rerun is archived; only the original three HST fields have a matched-protocol ablation.
+global_epsf_joint,Global empirical ePSF + neighbour joint,literature mapping: effective-PSF ablation (Libralato et al. 2024),11,4,No directly aligned full-frame registered result is archived for this method.
+three_gaussian_dpsf_joint,Three-Gaussian dPSF + neighbour joint,literature mapping: discrete-PSF approximation (Nie et al. 2025),11,4,No directly aligned full-frame registered result is archived for this method.
+spatial_epsf_joint,Spatial empirical ePSF + neighbour joint,literature-mapped spatial ePSF control,11,4,No directly aligned full-frame registered result is archived for this method.
+dolphot,DOLPHOT/ALLFRAME-class multi-exposure,external pipeline,0,15,Requires homogeneous calibrated multi-exposure inputs and native artificial-star scenes; a stacked single F606W image is not an input-equivalent DOLPHOT/ALLFRAME experiment.
+crowdsource,crowdsource joint multiband,external pipeline,0,15,Requires matched multi-band images and a joint-band source model; this matrix uses a single F606W stack or a CSST chip.
+euclid_vvv,Euclid/VVV full workflow,external pipeline,0,15,"Requires instrument-specific distortion, dithers and/or multi-epoch local transformations unavailable in this matched protocol."
+csst_psfnet,CSST-PSFNet,external PSF model,0,15,"Requires labelled 32x32 stellar stamps, PSF labels and a checkpoint/training protocol; available CSST FITS lacks the required labelled extensions."

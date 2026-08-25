@@ -1,0 +1,25 @@
+name: wpdc-repro-2026-08
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.7
+  - numpy=2.5.1
+  - scipy=1.18.0
+  - astropy=7.2.0
+  - photutils=3.0.0
+  - scikit-learn=1.9.0
+  - matplotlib
+  - psutil
+  - sep
+  - pip
+  - pip:
+      # Install from the matching PyTorch nightly CUDA 12.8 index. This exact
+      # time-stamped development wheel is not promised by stable Conda channels.
+      - torch==2.10.0.dev20250926+cu128
+# The GPU benchmark was run on an NVIDIA GeForce RTX 5060 Laptop GPU.
+# The PyTorch build string observed in the benchmark is
+# 2.10.0.dev20250926+cu128. Create the base environment first, then install
+# the exact wheel from https://download.pytorch.org/whl/nightly/cu128 if it is
+# still retained. If unavailable, record the replacement build and rerun the
+# benchmark; do not present the new timing as the archived Table 23 run.
